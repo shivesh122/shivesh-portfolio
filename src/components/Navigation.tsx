@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -25,6 +26,10 @@ const Navigation = () => {
     { name: "Contact", href: "#contact" }
   ];
 
+  const handleHireMe = () => {
+    window.location.href = "mailto:nikutiwari70@gmail.com?subject=Hire%20Inquiry&body=Hi%20Shivesh,%0A%0AI%20would%20like%20to%20discuss%20a%20potential%20project%20opportunity.%0A%0ARegards";
+  };
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border/50' : 'bg-transparent'
@@ -47,7 +52,11 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button 
+              size="sm" 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              onClick={handleHireMe}
+            >
               Hire Me
             </Button>
           </div>
@@ -77,7 +86,11 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground w-full">
+              <Button 
+                size="sm" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full"
+                onClick={handleHireMe}
+              >
                 Hire Me
               </Button>
             </div>

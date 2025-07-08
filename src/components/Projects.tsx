@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
@@ -9,7 +8,7 @@ const Projects = () => {
       title: "Coffee Sales Dashboard",
       description: "Interactive data visualization dashboard built in Power BI to analyze coffee sales trends, customer behavior, and revenue patterns with real-time insights.",
       tech: ["Power BI", "Excel", "Data Analysis", "DAX"],
-      image: "/placeholder.svg",
+      image: "https://i.ibb.co/zVfwG45z/coffee-dashboard.png",
       github: "https://github.com/shivesh122/Coffee-Sales",
       live: "https://github.com/shivesh122/Coffee-Sales"
     },
@@ -17,7 +16,7 @@ const Projects = () => {
       title: "Netflix Data Analysis",
       description: "Comprehensive analysis of Netflix viewing trends using Python, uncovering insights into content preferences and user behavior patterns across different demographics.",
       tech: ["Python", "Pandas", "Matplotlib", "Seaborn"],
-      image: "/placeholder.svg", 
+      image: "https://i.ibb.co/WWvkTcRb/netflix-analysis.png", 
       github: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis",
       live: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis"
     },
@@ -25,7 +24,7 @@ const Projects = () => {
       title: "ML Movie Recommendation Engine",
       description: "Machine learning-powered recommendation system that provides personalized movie suggestions based on user preferences, viewing history, and collaborative filtering.",
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
-      image: "/placeholder.svg",
+      image: "https://i.ibb.co/0RWVtcTW/movie-recommendation.png",
       github: "https://github.com/shivesh122/Movie-Recommendation-model-",
       live: "https://github.com/shivesh122/Movie-Recommendation-model-"
     },
@@ -33,7 +32,7 @@ const Projects = () => {
       title: "SkillMate Pods",
       description: "Hyperlocal, barter-based skill-sharing web platform connecting people to exchange skills and services within their communities using modern web technologies.",
       tech: ["Web Development", "Database Design", "UX/UI", "React"],
-      image: "/placeholder.svg",
+      image: "https://i.ibb.co/TqHGvhYP/skillmate-pods.png",
       github: "https://github.com/shivesh122/Skill-Mate",
       live: "https://skillmate7.vercel.app"
     }
