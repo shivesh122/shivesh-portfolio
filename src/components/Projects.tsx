@@ -8,7 +8,7 @@ const Projects = () => {
       title: "Coffee Sales Dashboard",
       description: "Interactive data visualization dashboard built in Power BI to analyze coffee sales trends, customer behavior, and revenue patterns with real-time insights.",
       tech: ["Power BI", "Excel", "Data Analysis", "DAX"],
-      image: "https://i.ibb.co/zVfwG45z/coffee-dashboard.png",
+      image: "https://ibb.co/JwNxymnv",
       github: "https://github.com/shivesh122/Coffee-Sales",
       live: "https://github.com/shivesh122/Coffee-Sales"
     },
