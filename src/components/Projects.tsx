@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
@@ -24,7 +25,7 @@ const Projects = () => {
       title: "ML Movie Recommendation Engine",
       description: "Machine learning-powered recommendation system that provides personalized movie suggestions based on user preferences, viewing history, and collaborative filtering.",
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
-      image: "https://i.ibb.co/0RWVtcTW/movie-recommendation.png",
+      image: "https://i.ibb.co/JwNxymnv/movie-recommendation.png",
       github: "https://github.com/shivesh122/Movie-Recommendation-model-",
       live: "https://github.com/shivesh122/Movie-Recommendation-model-"
     },
