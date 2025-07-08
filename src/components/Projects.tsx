@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
@@ -9,32 +10,32 @@ const Projects = () => {
       description: "Interactive data visualization dashboard built in Power BI to analyze coffee sales trends, customer behavior, and revenue patterns with real-time insights.",
       tech: ["Power BI", "Excel", "Data Analysis", "DAX"],
       image: "/placeholder.svg",
-      github: "#",
-      live: "#"
+      github: "https://github.com/shivesh122/Coffee-Sales",
+      live: "https://github.com/shivesh122/Coffee-Sales"
     },
     {
       title: "Netflix Data Analysis",
       description: "Comprehensive analysis of Netflix viewing trends using Python, uncovering insights into content preferences and user behavior patterns across different demographics.",
       tech: ["Python", "Pandas", "Matplotlib", "Seaborn"],
       image: "/placeholder.svg", 
-      github: "#",
-      live: "#"
+      github: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis",
+      live: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis"
     },
     {
       title: "ML Movie Recommendation Engine",
       description: "Machine learning-powered recommendation system that provides personalized movie suggestions based on user preferences, viewing history, and collaborative filtering.",
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
       image: "/placeholder.svg",
-      github: "#",
-      live: "#"
+      github: "https://github.com/shivesh122/Movie-Recommendation-model-",
+      live: "https://github.com/shivesh122/Movie-Recommendation-model-"
     },
     {
       title: "SkillMate Pods",
       description: "Hyperlocal, barter-based skill-sharing web platform connecting people to exchange skills and services within their communities using modern web technologies.",
       tech: ["Web Development", "Database Design", "UX/UI", "React"],
       image: "/placeholder.svg",
-      github: "#",
-      live: "#"
+      github: "https://github.com/shivesh122/Skill-Mate",
+      live: "https://skillmate7.vercel.app"
     }
   ];
 
@@ -96,6 +97,7 @@ const Projects = () => {
                       variant="outline" 
                       size="sm" 
                       className="flex-1 border-primary/20 text-foreground hover:bg-primary/10"
+                      onClick={() => window.open(project.github, '_blank')}
                     >
                       <Github className="mr-2 h-4 w-4" />
                       Code
@@ -103,6 +105,7 @@ const Projects = () => {
                     <Button 
                       size="sm" 
                       className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+                      onClick={() => window.open(project.live, '_blank')}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live
