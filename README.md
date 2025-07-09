@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# 👋 Hi, I'm Shivesh Tiwari
 
-## Project info
+Aspiring **Data Engineer** and **Data Analyst** with a strong foundation in data processing, pipeline development, and business intelligence. Passionate about solving real-world problems through data-driven insights, automation, and scalable architecture.
 
-**URL**: https://lovable.dev/projects/2edef2e9-00ed-496d-9ea0-495ff9d69a1f
+---
 
-## How can I edit this code?
+## 🧠 Skills & Technologies
 
-There are several ways of editing your application.
+- **Languages**: Python, SQL, C++, Java (Intermediate)
+- **Tools & Platforms**: Power BI, Excel, Tableau, Microsoft Power Platform
+- **Concepts**: Data Cleaning, Data Transformation, ETL Pipelines, Data Structures & Algorithms (DSA), Exploratory Data Analysis (EDA), Dashboarding, Machine Learning (Introductory)
+- **Other**: Git, Jupyter Notebooks, VS Code, GitHub
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2edef2e9-00ed-496d-9ea0-495ff9d69a1f) and start prompting.
+## 📂 Featured Projects
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📊 Coffee Sales Dashboard
+**Power BI | Excel | Data Visualization**  
+Developed a dynamic and interactive sales dashboard using Power BI to analyze coffee shop performance across multiple metrics including revenue, profit margins, and customer behavior.
 
-**Use your preferred IDE**
+🔗 [View Project Repository](https://github.com/shivesh122/Coffee-Sales)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🎬 Netflix Data Analysis  
+**Python | Pandas | Matplotlib | Seaborn**  
+Performed in-depth exploratory data analysis on Netflix viewing trends. Extracted key business insights using Python libraries to identify content trends and regional popularity.
 
-Follow these steps:
+🔗 [View Project Repository](https://github.com/shivesh122/NETFLIX_Movie_data_analysis)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🤖 Movie Recommendation System  
+**Python | Scikit-learn | Machine Learning (Intro)**  
+Built a basic machine learning model to recommend movies based on content similarity and user preferences. Applied cosine similarity, NLP techniques, and matrix operations.
 
-# Step 3: Install the necessary dependencies.
-npm i
+🔗 [View Project Repository](https://github.com/shivesh122/Movie-Recommendation-model-)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 🚀 Career Objectives
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Actively seeking full-time opportunities or internships in roles such as:
+- **Data Engineer**
+- **Data Analyst**
+- **Machine Learning Engineer (Entry Level)**
 
-**Use GitHub Codespaces**
+I aim to contribute to data-centric organizations by delivering optimized solutions through robust data pipelines, actionable dashboards, and applied analytics.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📫 Let's Connect
 
-This project is built with:
+- 📧 Email:  nikutiwari70@gmail.com 
+- 📱 Phone:
++91-9554913106
+- 🔗 LinkedIn: [linkedin.com/in/shivesh](https://www.linkedin.com/in/shivesh-tiwari-68b79a245)
+- 🌐Portfolio:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   [🚀Launch My Journey](https://linktr.ee/shivesh_1)
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/2edef2e9-00ed-496d-9ea0-495ff9d69a1f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+⭐ *Feel free to fork, use, or collaborate on any of my repositories. I'm open to learning and contributing to data-driven projects.*
