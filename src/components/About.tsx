@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 
 const About = () => {
@@ -7,9 +8,10 @@ const About = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
               About Me
             </h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Passionate about transforming data into actionable insights
             </p>
@@ -19,7 +21,7 @@ const About = () => {
             {/* Bio Section */}
             <div className="space-y-6">
               <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-foreground">
+                <h3 className="text-2xl font-semibold text-primary">
                   🚀 Aspiring Data Engineer | Data Analyst | Data Enthusiast
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -36,30 +38,30 @@ const About = () => {
 
             {/* Education Section */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Education</h3>
+              <h3 className="text-2xl font-semibold text-primary mb-6">Education</h3>
               <div className="space-y-4">
-                <Card className="bg-card-gradient border-border/50 p-6">
+                <Card className="bg-card border-border/50 p-6 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 rounded-xl">
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground">B.Tech (Final Year)</h4>
+                    <h4 className="font-semibold text-primary">B.Tech (Final Year)</h4>
                     <p className="text-sm text-muted-foreground">
                       KIPM College of Engineering & Technology
                     </p>
-                    <p className="text-xs text-primary">Engineering</p>
+                    <p className="text-xs text-secondary font-medium">Engineering</p>
                   </div>
                 </Card>
 
-                <Card className="bg-card-gradient border-border/50 p-6">
+                <Card className="bg-card border-border/50 p-6 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 rounded-xl">
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground">12th Grade (83%)</h4>
+                    <h4 className="font-semibold text-primary">12th Grade (83%)</h4>
                     <p className="text-sm text-muted-foreground">
                       Saraswati Vidya Mandir, CBSE
                     </p>
                   </div>
                 </Card>
 
-                <Card className="bg-card-gradient border-border/50 p-6">
+                <Card className="bg-card border-border/50 p-6 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 rounded-xl">
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground">10th Grade (93%)</h4>
+                    <h4 className="font-semibold text-primary">10th Grade (93%)</h4>
                     <p className="text-sm text-muted-foreground">
                       Saraswati Vidya Mandir, CBSE
                     </p>

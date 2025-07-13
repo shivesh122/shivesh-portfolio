@@ -32,13 +32,13 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border/50' : 'bg-transparent'
+      scrolled ? 'bg-background/95 backdrop-blur-lg border-b border-border shadow-card' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="text-xl font-bold bg-text-gradient bg-clip-text text-transparent">
-            Shivesh Tiwari
+          <div className="text-2xl font-bold text-primary">
+            ST
           </div>
 
           {/* Desktop Navigation */}
@@ -47,14 +47,14 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
               >
                 {item.name}
               </a>
             ))}
             <Button 
               size="sm" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-6 transition-all duration-300 hover:scale-105"
               onClick={handleHireMe}
             >
               Hire Me
@@ -65,7 +65,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="md:hidden text-primary"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -74,13 +74,13 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-card-gradient border border-border/50 rounded-lg mt-2 p-4 shadow-card">
+          <div className="md:hidden bg-card border border-border rounded-xl mt-2 p-6 shadow-card">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -88,7 +88,7 @@ const Navigation = () => {
               ))}
               <Button 
                 size="sm" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full rounded-lg py-3 mt-4 transition-all duration-300"
                 onClick={handleHireMe}
               >
                 Hire Me
