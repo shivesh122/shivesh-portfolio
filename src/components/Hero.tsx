@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Github, Mail, Linkedin, Download, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -136,7 +137,7 @@ const Hero = () => {
                     <div className="absolute inset-4 bg-gradient-to-tl from-accent/30 via-primary/30 to-secondary/30 rounded-full animate-float"></div>
                     <div className="absolute inset-8 glass-effect rounded-full flex items-center justify-center overflow-hidden">
                       <img 
-                        src="https://i.ibb.co/1JbxXW2/your-image.jpg" 
+                        src="/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png" 
                         alt="Shivesh Tiwari"
                         className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
                         onError={(e) => {
