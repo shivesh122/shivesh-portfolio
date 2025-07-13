@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -11,25 +12,25 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <div id="home">
+      <div id="home" className="relative">
         <Hero />
       </div>
-      <div id="about">
+      <div id="about" className="relative -mt-1">
         <About />
       </div>
-      <div id="skills">
+      <div id="skills" className="relative -mt-1">
         <Skills />
       </div>
-      <div id="services">
+      <div id="services" className="relative -mt-1">
         <Services />
       </div>
-      <div id="projects">
+      <div id="projects" className="relative -mt-1">
         <Projects />
       </div>
-      <div id="experience">
+      <div id="experience" className="relative -mt-1">
         <Experience />
       </div>
-      <div id="contact">
+      <div id="contact" className="relative -mt-1">
         <Contact />
       </div>
     </div>
