@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Github, Mail, Linkedin, Download, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -128,15 +127,28 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Visual Element */}
+              {/* Visual Element with Image */}
               <div className="order-1 lg:order-2 flex justify-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <div className="relative">
                   {/* Main decorative element */}
                   <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-full animate-pulse-3d"></div>
                     <div className="absolute inset-4 bg-gradient-to-tl from-accent/30 via-primary/30 to-secondary/30 rounded-full animate-float"></div>
-                    <div className="absolute inset-8 glass-effect rounded-full flex items-center justify-center">
-                      <div className="text-6xl sm:text-7xl lg:text-8xl font-bold text-primary/20">ST</div>
+                    <div className="absolute inset-8 glass-effect rounded-full flex items-center justify-center overflow-hidden">
+                      <img 
+                        src="https://i.ibb.co/1JbxXW2/your-image.jpg" 
+                        alt="Shivesh Tiwari"
+                        className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
+                        onError={(e) => {
+                          // Fallback to ST text if image fails to load
+                          e.currentTarget.style.display = 'none';
+                          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (fallback) fallback.style.display = 'flex';
+                        }}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center text-6xl sm:text-7xl lg:text-8xl font-bold text-primary/20" style={{ display: 'none' }}>
+                        ST
+                      </div>
                     </div>
                   </div>
                   
