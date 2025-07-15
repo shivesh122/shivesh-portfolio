@@ -7,6 +7,7 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import BackgroundAudio from "@/components/BackgroundAudio";
 
 const Index = () => {
   return (
@@ -33,6 +34,7 @@ const Index = () => {
       <div id="contact" className="relative -mt-1">
         <Contact />
       </div>
+      <BackgroundAudio />
     </div>
   );
 };
