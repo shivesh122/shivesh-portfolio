@@ -41,7 +41,7 @@ const Projects = () => {
       title: "BLW Employee Nexus Hub",
       description: "Employee management system for BLW organization featuring comprehensive employee data management, dashboard analytics, and administrative functionalities.",
       tech: ["React", "Node.js", "MongoDB", "Express"],
-      image: "/lovable-uploads/267ff8d6-9edd-4eab-a27a-1c24c5a2f628.png",
+      image: "/lovable-uploads/4335dc7b-2b4a-4bb1-91a6-62395704fd29.png",
       github: "https://github.com/shivesh122/blw-employee-nexus-hub",
       live: "https://blw-employee-nexus-hub.vercel.app/"
     }
