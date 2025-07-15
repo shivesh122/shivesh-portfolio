@@ -36,6 +36,14 @@ const Projects = () => {
       image: "https://i.ibb.co/TqHGvhYP/skillmate-pods.png",
       github: "https://github.com/shivesh122/Skill-Mate",
       live: "https://skillmate7.vercel.app"
+    },
+    {
+      title: "BLW Employee Nexus Hub",
+      description: "Employee management system for BLW organization featuring comprehensive employee data management, dashboard analytics, and administrative functionalities.",
+      tech: ["React", "Node.js", "MongoDB", "Express"],
+      image: "https://i.ibb.co/7m9njQy",
+      github: "https://github.com/shivesh122/blw-employee-nexus-hub",
+      live: "https://blw-employee-nexus-hub.vercel.app/"
     }
   ];
 
