@@ -1,13 +1,15 @@
 
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Services from "@/components/Services";
-import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
-import BackgroundAudio from "@/components/BackgroundAudio";
+import { Suspense, lazy } from "react";
+
+const About = lazy(() => import("@/components/About"));
+const Skills = lazy(() => import("@/components/Skills"));
+const Services = lazy(() => import("@/components/Services"));
+const Projects = lazy(() => import("@/components/Projects"));
+const Experience = lazy(() => import("@/components/Experience"));
+const Contact = lazy(() => import("@/components/Contact"));
+const BackgroundAudio = lazy(() => import("@/components/BackgroundAudio"));
 
 const Index = () => {
   return (
@@ -17,24 +19,38 @@ const Index = () => {
         <Hero />
       </div>
       <div id="about" className="relative -mt-1">
-        <About />
+        <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <About />
+        </Suspense>
       </div>
       <div id="skills" className="relative -mt-1">
-        <Skills />
+        <Suspense fallback={<div className="h-60 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <Skills />
+        </Suspense>
       </div>
       <div id="services" className="relative -mt-1">
-        <Services />
+        <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <Services />
+        </Suspense>
       </div>
       <div id="projects" className="relative -mt-1">
-        <Projects />
+        <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <Projects />
+        </Suspense>
       </div>
       <div id="experience" className="relative -mt-1">
-        <Experience />
+        <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <Experience />
+        </Suspense>
       </div>
       <div id="contact" className="relative -mt-1">
-        <Contact />
+        <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+          <Contact />
+        </Suspense>
       </div>
-      <BackgroundAudio />
+      <Suspense fallback={null}>
+        <BackgroundAudio />
+      </Suspense>
     </div>
   );
 };

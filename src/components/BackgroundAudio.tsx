@@ -49,7 +49,7 @@ const BackgroundAudio = () => {
     <div className="fixed bottom-4 right-4 z-50">
       <audio
         ref={audioRef}
-        preload="auto"
+        preload="none"
         muted={isMuted}
       >
         <source src={audioUrl} type="audio/mpeg" />

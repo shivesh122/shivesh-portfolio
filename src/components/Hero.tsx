@@ -140,6 +140,8 @@ const Hero = () => {
                         src="/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png" 
                         alt="Shivesh Tiwari"
                         className="w-full h-full object-cover rounded-full transition-transform duration-300 hover:scale-105"
+                        decoding="async"
+                        fetchPriority="high"
                         onError={(e) => {
                           // Fallback to ST text if image fails to load
                           e.currentTarget.style.display = 'none';
