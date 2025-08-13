@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, User, Code, Briefcase, FolderOpen, Award, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,51 +73,57 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.name.toLowerCase();
               return (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href, item.name.toLowerCase())}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+                  className={`relative px-5 py-3 text-sm font-bold rounded-2xl transition-all duration-500 group ${
                     isActive 
-                      ? 'text-primary bg-primary/10' 
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                      ? 'text-primary bg-primary/15 shadow-card neon-glow' 
+                      : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                   }`}
                 >
-                  <item.icon className="inline-block w-4 h-4 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                  <item.icon className="inline-block w-4 h-4 mr-2 transition-transform duration-300 group-hover:scale-125" />
                   {item.name}
                   
-                  {/* Active indicator */}
-                  <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 ${
-                    isActive ? 'w-3/4' : 'group-hover:w-1/2'
+                  {/* Futuristic active indicator */}
+                  <span className={`absolute bottom-1 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-500 ${
+                    isActive ? 'w-4/5 opacity-100' : 'w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-100'
                   }`}></span>
                 </button>
               );
             })}
             
+            <ThemeToggle />
+            
             <Button 
               size="sm" 
-              className="ml-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground rounded-lg px-6 py-2 font-medium transition-all duration-300 hover:scale-105 shadow-card hover:shadow-hover"
+              className="ml-4 bg-gradient-to-r from-primary via-secondary to-accent hover:from-primary/90 hover:via-secondary/90 hover:to-accent/90 text-primary-foreground rounded-2xl px-8 py-3 font-bold transition-all duration-500 hover:scale-110 shadow-card hover:shadow-hover neon-glow relative overflow-hidden group"
               onClick={handleHireMe}
             >
-              Hire Me
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10">Hire Me</span>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="lg:hidden text-primary hover:bg-primary/10 w-10 h-10 rounded-lg transition-all duration-300"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div className="relative w-6 h-6">
-              <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
-              <X className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
-            </div>
-          </Button>
+          {/* Mobile Actions */}
+          <div className="lg:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-primary hover:bg-primary/10 w-10 h-10 rounded-2xl transition-all duration-500 glass-effect border border-primary/30 neon-glow"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <div className="relative w-6 h-6">
+                <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-500 ${isOpen ? 'opacity-0 rotate-180 scale-75' : 'opacity-100 rotate-0 scale-100'}`} />
+                <X className={`absolute inset-0 w-6 h-6 transition-all duration-500 ${isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-180 scale-75'}`} />
+              </div>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
