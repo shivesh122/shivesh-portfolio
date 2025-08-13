@@ -11,7 +11,8 @@ const Projects = () => {
       tech: ["Power BI", "Excel", "Data Analysis", "DAX"],
       image: "https://i.ibb.co/zVfwG45z/coffee-dashboard.png",
       github: "https://github.com/shivesh122/Coffee-Sales",
-      live: "https://github.com/shivesh122/Coffee-Sales"
+      live: "https://github.com/shivesh122/Coffee-Sales",
+      gradient: "from-orange-500/20 to-amber-500/20"
     },
     {
       title: "Netflix Data Analysis",
@@ -19,7 +20,8 @@ const Projects = () => {
       tech: ["Python", "Pandas", "Matplotlib", "Seaborn"],
       image: "https://i.ibb.co/WWvkTcRb/netflix-analysis.png", 
       github: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis",
-      live: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis"
+      live: "https://github.com/shivesh122/NETFLIX_Movie_data_analysis",
+      gradient: "from-red-500/20 to-pink-500/20"
     },
     {
       title: "ML Movie Recommendation Engine",
@@ -27,7 +29,8 @@ const Projects = () => {
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
       image: "https://i.ibb.co/JwNxymnv/movie-recommendation.png",
       github: "https://github.com/shivesh122/Movie-Recommendation-model-",
-      live: "https://github.com/shivesh122/Movie-Recommendation-model-"
+      live: "https://github.com/shivesh122/Movie-Recommendation-model-",
+      gradient: "from-purple-500/20 to-blue-500/20"
     },
     {
       title: "SkillMate Pods",
@@ -35,7 +38,8 @@ const Projects = () => {
       tech: ["Web Development", "Database Design", "UX/UI", "React"],
       image: "https://i.ibb.co/TqHGvhYP/skillmate-pods.png",
       github: "https://github.com/shivesh122/Skill-Mate",
-      live: "https://skillmate7.vercel.app"
+      live: "https://skillmate7.vercel.app",
+      gradient: "from-green-500/20 to-emerald-500/20"
     },
     {
       title: "BLW Employee Nexus Hub",
@@ -43,87 +47,142 @@ const Projects = () => {
       tech: ["React", "Node.js", "MongoDB", "Express"],
       image: "/lovable-uploads/4335dc7b-2b4a-4bb1-91a6-62395704fd29.png",
       github: "https://github.com/shivesh122/blw-employee-nexus-hub",
-      live: "https://blw-employee-nexus-hub.vercel.app/"
+      live: "https://blw-employee-nexus-hub.vercel.app/",
+      gradient: "from-cyan-500/20 to-teal-500/20"
     }
   ];
 
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/30 to-background"></div>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-20">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full text-sm font-medium text-primary border border-primary/20">
+                Portfolio Showcase
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent mb-6">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Data-driven projects showcasing analytical expertise and technical problem-solving skills
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Data-driven projects showcasing analytical expertise and technical problem-solving skills across various domains
             </p>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card 
+              <div 
                 key={index}
-                className="bg-card-gradient border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 overflow-hidden group"
+                className="group relative"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Project Image */}
-                <div className="aspect-video bg-muted/50 relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {project.title}
-                  </h3>
+                <Card className="relative overflow-hidden bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border-0 shadow-2xl hover:shadow-elegant transition-all duration-700 hover:-translate-y-3 hover:rotate-1 h-full">
+                  {/* Gradient Border */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg`}></div>
+                  <div className="absolute inset-[1px] bg-card/90 backdrop-blur-sm rounded-lg"></div>
                   
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Project Image */}
+                    <div className="aspect-video relative overflow-hidden rounded-t-lg">
+                      <img 
+                        src={project.image} 
+                        alt={`${project.title} - Portfolio project screenshot`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                      
+                      {/* Floating Action Buttons */}
+                      <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                        <Button 
+                          size="icon"
+                          variant="secondary"
+                          className="h-8 w-8 bg-background/80 backdrop-blur-sm hover:bg-background"
+                          onClick={() => window.open(project.github, '_blank')}
+                        >
+                          <Github className="h-4 w-4" />
+                        </Button>
+                        <Button 
+                          size="icon"
+                          className="h-8 w-8 bg-primary/80 backdrop-blur-sm hover:bg-primary"
+                          onClick={() => window.open(project.live, '_blank')}
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium border border-primary/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-3">
+                        {project.description}
+                      </p>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex-1 border-primary/20 text-foreground hover:bg-primary/10"
-                      onClick={() => window.open(project.github, '_blank')}
-                    >
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </Button>
-                    <Button 
-                      size="sm" 
-                      className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
-                      onClick={() => window.open(project.live, '_blank')}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live
-                    </Button>
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-gradient-to-r from-primary/10 to-accent/10 text-primary rounded-full text-xs font-medium border border-primary/20 hover:border-primary/40 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-3">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="flex-1 border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                          onClick={() => window.open(project.github, '_blank')}
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          Source
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          className="flex-1 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                          onClick={() => window.open(project.live, '_blank')}
+                        >
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Demo
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <p className="text-muted-foreground mb-6">
+              Want to see more projects or discuss a collaboration?
+            </p>
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 px-8"
+            >
+              View All Projects
+              <ExternalLink className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>
