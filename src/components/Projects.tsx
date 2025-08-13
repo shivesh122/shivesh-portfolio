@@ -54,7 +54,7 @@ const Projects = () => {
       title: "Titanic Survival Prediction App",
       description: "Machine learning application that predicts passenger survival on the Titanic using historical data. Features batch CSV prediction capabilities and an intuitive web interface for individual predictions.",
       tech: ["Python", "Streamlit", "Machine Learning", "Pandas", "Scikit-learn"],
-      image: "/lovable-uploads/920b9dec-1425-465d-9770-58200484dac5.png",
+      image: "/lovable-uploads/40fa6509-20a0-44c9-a08e-908375f37a3e.png",
       github: "https://github.com/shivesh122/Titanic-servival-prediction-model-",
       live: "https://7dtzqkmvoc7rw5fzmthw33.streamlit.app/",
       gradient: "from-blue-500/20 to-indigo-500/20"
