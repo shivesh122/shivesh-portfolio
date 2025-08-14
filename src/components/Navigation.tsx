@@ -53,102 +53,106 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-background/90 backdrop-blur-md border-b border-border shadow-card' 
+        ? 'glass-effect border-b border-primary/10 shadow-elegant' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-18">
-          {/* Professional Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="text-2xl font-bold text-primary cursor-pointer transition-all duration-300 hover:scale-105">
+        <div className="flex items-center justify-between h-20 lg:h-22">
+          {/* Modern Logo */}
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center text-2xl font-bold text-white cursor-pointer transition-all duration-500 magnetic-hover glow-effect">
               ST
             </div>
-            <span className="hidden sm:block text-sm font-medium text-muted-foreground">Shivesh Tiwari</span>
+            <span className="hidden sm:block text-lg font-bold gradient-text">Shivesh Tiwari</span>
           </div>
 
-          {/* Clean Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2">
+          {/* Modern Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.name.toLowerCase();
               return (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href, item.name.toLowerCase())}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 focus-visible ${
+                  className={`relative px-5 py-3 text-sm font-semibold rounded-2xl transition-all duration-500 focus-visible group overflow-hidden ${
                     isActive 
-                      ? 'text-primary bg-primary/10' 
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                      ? 'text-primary bg-primary/15 shadow-card glow-effect' 
+                      : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                   }`}
                 >
-                  <item.icon className="inline-block w-4 h-4 mr-2" />
-                  {item.name}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                  <item.icon className="inline-block w-5 h-5 mr-2 relative z-10" />
+                  <span className="relative z-10">{item.name}</span>
                   
-                  {/* Clean active indicator */}
+                  {/* Modern active indicator */}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-primary rounded-full"></span>
+                    <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></span>
                   )}
                 </button>
               );
             })}
             
             <Button 
-              size="sm" 
-              className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-medium transition-all duration-300 card-hover-effect shadow-card focus-visible"
+              size="lg" 
+              className="ml-6 bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white px-8 py-3 font-semibold transition-all duration-500 magnetic-hover glow-effect shadow-elegant focus-visible rounded-2xl"
               onClick={handleHireMe}
             >
+              <Mail className="mr-2 h-5 w-5" />
               Hire Me
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Modern Mobile Menu Button */}
           <Button
             variant="ghost"
-            size="sm"
-            className="lg:hidden text-primary hover:bg-primary/10 w-10 h-10 rounded-lg transition-all duration-300"
+            size="lg"
+            className="lg:hidden glass-effect text-primary hover:bg-primary/10 w-14 h-14 rounded-2xl transition-all duration-500 magnetic-hover shadow-card"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <div className="relative w-6 h-6">
-              <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'}`} />
-              <X className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'}`} />
+            <div className="relative w-7 h-7">
+              <Menu className={`absolute inset-0 w-7 h-7 transition-all duration-500 ${isOpen ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'}`} />
+              <X className={`absolute inset-0 w-7 h-7 transition-all duration-500 ${isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'}`} />
             </div>
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        {/* Modern Mobile Navigation */}
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
           isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-background/95 backdrop-blur-md border border-border rounded-lg mt-4 mb-4 p-4 shadow-card">
-            <div className="space-y-2">
+          <div className="glass-effect border border-primary/20 rounded-3xl mt-6 mb-6 p-6 shadow-elegant animate-scale-in">
+            <div className="space-y-4">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.name.toLowerCase();
                 return (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href, item.name.toLowerCase())}
-                    className={`flex items-center space-x-3 p-3 rounded-md font-medium transition-all duration-300 w-full text-left ${
+                    className={`flex items-center space-x-4 p-4 rounded-2xl font-semibold transition-all duration-500 w-full text-left animate-fade-in group overflow-hidden relative ${
                       isActive 
-                        ? 'text-primary bg-primary/10' 
-                        : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                        ? 'text-primary bg-primary/15 shadow-card' 
+                        : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                     }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <item.icon className="w-5 h-5" />
-                    <span>{item.name}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                    <item.icon className="w-6 h-6 relative z-10" />
+                    <span className="relative z-10">{item.name}</span>
                     {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-primary rounded-full"></div>
+                      <div className="ml-auto w-3 h-3 bg-gradient-to-r from-primary to-accent rounded-full relative z-10 animate-glow-pulse"></div>
                     )}
                   </button>
                 );
               })}
               
               <Button 
-                size="sm" 
-                className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground w-full py-3 font-medium transition-all duration-300 shadow-card"
+                size="lg" 
+                className="mt-6 bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white w-full py-4 font-semibold transition-all duration-500 shadow-elegant rounded-2xl magnetic-hover glow-effect"
                 onClick={handleHireMe}
               >
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-5 w-5" />
                 Hire Me
               </Button>
             </div>
@@ -156,8 +160,8 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Simple Progress Bar */}
-      <div className="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"
+      {/* Modern Progress Bar */}
+      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary via-accent to-primary transition-all duration-300 glow-effect"
            style={{ 
              width: `${Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100)}%` 
            }}
