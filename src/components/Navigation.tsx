@@ -53,52 +53,49 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-background/95 backdrop-blur-lg border-b border-border shadow-elegant glass-effect' 
+        ? 'bg-background/90 backdrop-blur-md border-b border-border shadow-card' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <div className="text-2xl sm:text-3xl font-bold text-primary transition-all duration-300 hover:scale-110 cursor-pointer">
-                ST
-              </div>
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        <div className="flex items-center justify-between h-16 lg:h-18">
+          {/* Professional Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="text-2xl font-bold text-primary cursor-pointer transition-all duration-300 hover:scale-105">
+              ST
             </div>
             <span className="hidden sm:block text-sm font-medium text-muted-foreground">Shivesh Tiwari</span>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          {/* Clean Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => {
               const isActive = activeSection === item.name.toLowerCase();
               return (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href, item.name.toLowerCase())}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 group ${
+                  className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 focus-visible ${
                     isActive 
                       ? 'text-primary bg-primary/10' 
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <item.icon className="inline-block w-4 h-4 mr-2 transition-transform duration-300 group-hover:scale-110" />
+                  <item.icon className="inline-block w-4 h-4 mr-2" />
                   {item.name}
                   
-                  {/* Active indicator */}
-                  <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 ${
-                    isActive ? 'w-3/4' : 'group-hover:w-1/2'
-                  }`}></span>
+                  {/* Clean active indicator */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-primary rounded-full"></span>
+                  )}
                 </button>
               );
             })}
             
             <Button 
               size="sm" 
-              className="ml-6 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground rounded-lg px-6 py-2 font-medium transition-all duration-300 hover:scale-105 shadow-card hover:shadow-hover"
+              className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 font-medium transition-all duration-300 card-hover-effect shadow-card focus-visible"
               onClick={handleHireMe}
             >
               Hire Me
@@ -120,28 +117,27 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="glass-effect border border-border/50 rounded-xl mt-4 mb-4 p-6 shadow-elegant animate-slide-in-right">
-            <div className="grid grid-cols-1 gap-3">
+          <div className="bg-background/95 backdrop-blur-md border border-border rounded-lg mt-4 mb-4 p-4 shadow-card">
+            <div className="space-y-2">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.name.toLowerCase();
                 return (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href, item.name.toLowerCase())}
-                    className={`flex items-center space-x-3 p-3 rounded-lg font-medium transition-all duration-300 animate-fade-in-up ${
+                    className={`flex items-center space-x-3 p-3 rounded-md font-medium transition-all duration-300 w-full text-left ${
                       isActive 
-                        ? 'text-primary bg-primary/10 border border-primary/20' 
+                        ? 'text-primary bg-primary/10' 
                         : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
                     }`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <item.icon className="w-5 h-5" />
                     <span>{item.name}</span>
                     {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div className="ml-auto w-2 h-2 bg-primary rounded-full"></div>
                     )}
                   </button>
                 );
@@ -149,7 +145,7 @@ const Navigation = () => {
               
               <Button 
                 size="sm" 
-                className="mt-4 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground w-full rounded-lg py-3 font-medium transition-all duration-300 hover:scale-105 shadow-card"
+                className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground w-full py-3 font-medium transition-all duration-300 shadow-card"
                 onClick={handleHireMe}
               >
                 <Mail className="mr-2 h-4 w-4" />
@@ -160,8 +156,8 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-300"
+      {/* Simple Progress Bar */}
+      <div className="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300"
            style={{ 
              width: `${Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100)}%` 
            }}
