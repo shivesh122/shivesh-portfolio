@@ -35,39 +35,41 @@ const Hero = () => {
                 <div className="space-y-6">
                   <div className="space-y-6">
                     <h1 className="text-display text-foreground leading-tight animate-slide-in-left">
-                      Hello, I'm <span className="gradient-text animate-shimmer shimmer-effect">Shivesh Tiwari</span>
+                      Hey! 👋 I'm <span className="gradient-text animate-shimmer shimmer-effect">Shivesh Tiwari</span>
                     </h1>
-                    <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto lg:mx-0 rounded-full animate-fade-in-up glow-effect" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-accent to-primary mx-auto lg:mx-0 rounded-full animate-fade-in-up" style={{ animationDelay: '0.3s' }}></div>
                   </div>
                   
                   <h2 className="responsive-subheading accent-gradient animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                    Data Engineer | Data Analyst | Tech Explorer
+                    Data Engineer | Analyst | Machine Learning Enthusiast
                   </h2>
                 </div>
                 
                 <p className="responsive-body text-muted-foreground max-w-2xl leading-relaxed text-center lg:text-left animate-slide-up" style={{ animationDelay: '0.7s' }}>
-                  Passionate about <span className="text-primary font-semibold">transforming raw data</span> into meaningful insights and building 
-                  <span className="text-accent font-semibold"> scalable data pipelines</span>. 
-                  Currently pursuing my degree while building practical projects and expanding my skills in modern analytics.
+                  A passionate data professional who transforms raw data into actionable insights. I specialize in building 
+                  <span className="text-primary font-semibold"> scalable data pipelines</span>, developing 
+                  <span className="text-primary font-semibold">machine learning models</span>, and creating 
+                  data-driven solutions that drive business growth. Currently pursuing my degree while gaining hands-on experience 
+                  through practical projects and internships.
                 </p>
                 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center animate-scale-in" style={{ animationDelay: '0.9s' }}>
                   <Button 
                     size="lg" 
-                    className="w-full sm:w-auto bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-primary-foreground shadow-elegant px-10 py-4 font-semibold transition-all duration-500 magnetic-hover glow-effect focus-visible text-lg"
+                    className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground shadow-elegant px-10 py-4 font-semibold transition-all duration-300 focus-visible text-lg"
                     onClick={handleDownloadResume}
                   >
                     <Download className="mr-3 h-6 w-6" />
-                    Download Resume
+                    View Resume
                   </Button>
                   <Button 
                     variant="outline" 
                     size="lg" 
-                    className="w-full sm:w-auto glass-effect border-primary/30 text-primary hover:bg-primary/10 hover:border-primary px-10 py-4 font-semibold transition-all duration-500 magnetic-hover focus-visible text-lg"
+                    className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground px-10 py-4 font-semibold transition-all duration-300 focus-visible text-lg"
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    Get In Touch
+                    Contact Me
                   </Button>
                 </div>
                 

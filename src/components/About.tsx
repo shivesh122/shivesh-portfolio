@@ -77,20 +77,25 @@ const About = () => {
               <div className="space-y-4 sm:space-y-6">
                 <div className="relative">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary mb-4 sm:mb-6">
-                    🚀 Aspiring Data Engineer | Data Analyst | Data Enthusiast
+                    Who I Am
                   </h3>
                   <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-primary to-secondary rounded-full"></div>
                 </div>
                 
                 <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed">
                   <p className="responsive-body">
-                    Final year Engineering student passionate about turning raw data into meaningful insights 
-                    and building scalable data pipelines. I specialize in Python, SQL, Power BI, Excel, and 
-                    Tableau, with a strong foundation in DSA and pipelining techniques.
+                    A passionate final-year engineering student who loves transforming complex data into meaningful insights. 
+                    I specialize in building robust data pipelines, creating compelling visualizations, and developing 
+                    machine learning solutions that drive business value.
                   </p>
                   <p className="responsive-body">
-                    My journey in data engineering combines analytical thinking with technical expertise 
-                    to solve complex data challenges and create value-driven solutions.
+                    With expertise in Python, SQL, Power BI, and advanced analytics tools, I'm dedicated to solving 
+                    real-world problems through data-driven approaches. I thrive on continuous learning and enjoy 
+                    collaborating on projects that make a meaningful impact.
+                  </p>
+                  <p className="responsive-body">
+                    Currently seeking opportunities to apply my skills in data engineering and analytics while 
+                    contributing to innovative projects that shape the future of data science.
                   </p>
                 </div>
 

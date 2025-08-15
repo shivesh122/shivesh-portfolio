@@ -16,17 +16,17 @@ const Index = () => {
     <>
       {/* SEO Meta Tags */}
       <head>
-        <title>Shivesh Tiwari - Data Engineer & Analyst | Modern Portfolio</title>
-        <meta name="description" content="Shivesh Tiwari is a passionate Data Engineer and Analyst specializing in transforming raw data into meaningful insights and building scalable data pipelines. Explore my projects, skills, and achievements." />
-        <meta name="keywords" content="data engineer, data analyst, python, machine learning, data science, portfolio, Shivesh Tiwari" />
+        <title>Shivesh Tiwari - Data Engineer | Data Analyst | Final Year B.Tech Student</title>
+        <meta name="description" content="Shivesh Tiwari - Final year engineering student specializing in data engineering, analytics, and machine learning. Experienced in Python, SQL, Power BI, and building scalable data solutions. Open to full-time opportunities and internships." />
+        <meta name="keywords" content="data engineer, data analyst, python developer, SQL expert, Power BI, machine learning, final year student, engineering graduate, internship, full-time opportunity, data science, business intelligence" />
         <meta name="author" content="Shivesh Tiwari" />
-        <meta property="og:title" content="Shivesh Tiwari - Data Engineer & Analyst Portfolio" />
-        <meta property="og:description" content="Modern portfolio showcasing data engineering projects, analytics skills, and professional achievements." />
+        <meta property="og:title" content="Shivesh Tiwari - Data Engineer & Analyst | Seeking Opportunities" />
+        <meta property="og:description" content="Final year engineering student with expertise in data engineering and analytics. View my projects, skills, and achievements. Available for full-time roles and internships." />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Shivesh Tiwari - Data Engineer & Analyst" />
-        <meta name="twitter:description" content="Passionate about transforming data into insights. View my portfolio." />
+        <meta name="twitter:title" content="Shivesh Tiwari - Data Professional Seeking Opportunities" />
+        <meta name="twitter:description" content="Final year student passionate about data engineering and analytics. Ready to contribute to your team." />
         <link rel="canonical" href="/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
