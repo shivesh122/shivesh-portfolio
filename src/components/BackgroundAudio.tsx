@@ -14,16 +14,25 @@ const BackgroundAudio = () => {
     const audio = audioRef.current;
     if (audio) {
       audio.loop = true;
-      audio.volume = 0.3; // Set a gentle volume
+      audio.volume = 0.2; // Set a gentle volume
       
       const handleCanPlay = () => {
         setIsLoaded(true);
       };
 
+      const handleLoadedData = () => {
+        setIsLoaded(true);
+      };
+
       audio.addEventListener('canplaythrough', handleCanPlay);
+      audio.addEventListener('loadeddata', handleLoadedData);
+      
+      // Preload the audio
+      audio.load();
       
       return () => {
         audio.removeEventListener('canplaythrough', handleCanPlay);
+        audio.removeEventListener('loadeddata', handleLoadedData);
       };
     }
   }, []);
@@ -49,8 +58,9 @@ const BackgroundAudio = () => {
     <div className="fixed bottom-4 right-4 z-50">
       <audio
         ref={audioRef}
-        preload="none"
+        preload="metadata"
         muted={isMuted}
+        crossOrigin="anonymous"
       >
         <source src={audioUrl} type="audio/mpeg" />
         {/* Fallback to a data URL with a simple peaceful tone */}

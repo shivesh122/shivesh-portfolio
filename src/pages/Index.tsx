@@ -16,12 +16,12 @@ const Index = () => {
     <>
       {/* SEO Meta Tags */}
       <head>
-        <title>Shivesh Tiwari - Data Engineer | Data Analyst | Final Year B.Tech Student</title>
-        <meta name="description" content="Shivesh Tiwari - Final year engineering student specializing in data engineering, analytics, and machine learning. Experienced in Python, SQL, Power BI, and building scalable data solutions. Open to full-time opportunities and internships." />
-        <meta name="keywords" content="data engineer, data analyst, python developer, SQL expert, Power BI, machine learning, final year student, engineering graduate, internship, full-time opportunity, data science, business intelligence" />
+        <title>Shivesh Tiwari - Data Analyst | Data Science Expert | Business Intelligence Professional</title>
+        <meta name="description" content="Shivesh Tiwari - Professional Data Analyst specializing in data science, business intelligence, and advanced analytics. Expert in Python, SQL, Power BI, machine learning, and data visualization. Transforming complex data into actionable business insights." />
+        <meta name="keywords" content="data analyst, data science, business intelligence, python, SQL, power bi, machine learning, data visualization, business analytics, statistical analysis, predictive modeling, dashboard development, ETL, data mining" />
         <meta name="author" content="Shivesh Tiwari" />
-        <meta property="og:title" content="Shivesh Tiwari - Data Engineer & Analyst | Seeking Opportunities" />
-        <meta property="og:description" content="Final year engineering student with expertise in data engineering and analytics. View my projects, skills, and achievements. Available for full-time roles and internships." />
+        <meta property="og:title" content="Shivesh Tiwari - Expert Data Analyst & Data Science Professional" />
+        <meta property="og:description" content="Professional Data Analyst with expertise in data science and business intelligence. Transforming data into strategic business insights through advanced analytics and visualization." />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png" />
         <meta name="twitter:card" content="summary_large_image" />

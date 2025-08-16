@@ -84,28 +84,26 @@ const About = () => {
                 
                 <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed">
                   <p className="responsive-body">
-                    A passionate final-year engineering student who loves transforming complex data into meaningful insights. 
-                    I specialize in building robust data pipelines, creating compelling visualizations, and developing 
-                    machine learning solutions that drive business value.
+                    A dedicated Data Analyst with deep expertise in Data Science, passionate about transforming complex datasets into strategic business insights. 
+                    I specialize in advanced statistical analysis, predictive modeling, data visualization, and developing comprehensive business intelligence solutions that drive organizational growth.
                   </p>
                   <p className="responsive-body">
-                    With expertise in Python, SQL, Power BI, and advanced analytics tools, I'm dedicated to solving 
-                    real-world problems through data-driven approaches. I thrive on continuous learning and enjoy 
-                    collaborating on projects that make a meaningful impact.
+                    With proficiency in Python, SQL, Power BI, machine learning algorithms, and statistical modeling, I excel at uncovering hidden patterns in data and translating findings into actionable recommendations. 
+                    My analytical mindset combined with strong business acumen enables me to bridge the gap between technical analysis and strategic decision-making.
                   </p>
                   <p className="responsive-body">
-                    Currently seeking opportunities to apply my skills in data engineering and analytics while 
-                    contributing to innovative projects that shape the future of data science.
+                    Currently leveraging my expertise to help organizations optimize operations, improve performance metrics, and make data-driven decisions. 
+                    I'm passionate about continuous learning in emerging analytics technologies and methodologies.
                   </p>
                 </div>
 
                 {/* Key highlights */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 sm:mt-8">
                   {[
-                    { icon: "🎯", title: "Focus", desc: "Data Engineering & Analytics" },
-                    { icon: "💼", title: "Experience", desc: "Multiple Projects" },
-                    { icon: "🎓", title: "Education", desc: "Final Year B.Tech" },
-                    { icon: "⚡", title: "Passion", desc: "Data-Driven Solutions" }
+                    { icon: "📊", title: "Specialization", desc: "Data Analysis & Science" },
+                    { icon: "🧠", title: "Expertise", desc: "Machine Learning & BI" },
+                    { icon: "🎓", title: "Education", desc: "B.Tech Engineering" },
+                    { icon: "⚡", title: "Passion", desc: "Business Intelligence" }
                   ].map((item, index) => (
                     <div 
                       key={index}
