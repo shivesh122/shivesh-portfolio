@@ -14,7 +14,8 @@ const BackgroundAudio = () => {
     const audio = audioRef.current;
     if (audio) {
       audio.loop = true;
-      audio.volume = 0.2; // Set a gentle volume
+      audio.volume = 0.15; // Set a gentle volume
+      audio.preload = "auto";
       
       const handleCanPlay = () => {
         setIsLoaded(true);
@@ -24,15 +25,24 @@ const BackgroundAudio = () => {
         setIsLoaded(true);
       };
 
+      const handleError = (e: Event) => {
+        console.log('Audio loading error:', e);
+        setIsLoaded(false);
+      };
+
       audio.addEventListener('canplaythrough', handleCanPlay);
       audio.addEventListener('loadeddata', handleLoadedData);
+      audio.addEventListener('error', handleError);
       
-      // Preload the audio
-      audio.load();
+      // Ensure audio loads properly
+      if (audio.readyState >= 2) {
+        setIsLoaded(true);
+      }
       
       return () => {
         audio.removeEventListener('canplaythrough', handleCanPlay);
         audio.removeEventListener('loadeddata', handleLoadedData);
+        audio.removeEventListener('error', handleError);
       };
     }
   }, []);
@@ -58,13 +68,12 @@ const BackgroundAudio = () => {
     <div className="fixed bottom-4 right-4 z-50">
       <audio
         ref={audioRef}
-        preload="metadata"
+        preload="auto"
         muted={isMuted}
-        crossOrigin="anonymous"
+        playsInline
       >
         <source src={audioUrl} type="audio/mpeg" />
-        {/* Fallback to a data URL with a simple peaceful tone */}
-        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhCR5u4OOuUT4T" type="audio/wav" />
+        Your browser does not support the audio element.
       </audio>
       
       <Button

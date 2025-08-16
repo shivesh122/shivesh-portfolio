@@ -38,32 +38,32 @@ const Index = () => {
             <Hero />
           </section>
           <section id="about" className="relative">
-            <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <About />
             </Suspense>
           </section>
           <section id="skills" className="relative">
-            <Suspense fallback={<div className="h-60 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <Skills />
             </Suspense>
           </section>
           <section id="services" className="relative">
-            <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <Services />
             </Suspense>
           </section>
           <section id="projects" className="relative">
-            <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <Projects />
             </Suspense>
           </section>
           <section id="experience" className="relative">
-            <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <Experience />
             </Suspense>
           </section>
           <section id="contact" className="relative">
-            <Suspense fallback={<div className="h-40 animate-pulse bg-muted/30" aria-hidden="true" />}> 
+            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <Contact />
             </Suspense>
           </section>
