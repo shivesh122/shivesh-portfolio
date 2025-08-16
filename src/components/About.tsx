@@ -34,6 +34,7 @@ const About = () => {
       degree: "12th Grade",
       institution: "Saraswati Vidya Mandir, CBSE",
       field: "83% Score",
+      score: "83%",
       icon: Award,
       gradient: "from-secondary/20 to-accent/20"
     },
@@ -41,6 +42,7 @@ const About = () => {
       degree: "10th Grade", 
       institution: "Saraswati Vidya Mandir, CBSE",
       field: "93% Score",
+      score: "93%",
       icon: Award,
       gradient: "from-accent/20 to-primary/20"
     }
@@ -159,6 +161,14 @@ const About = () => {
                               <div className="flex items-center space-x-2">
                                 <Calendar className="h-4 w-4 text-secondary" />
                                 <span className="text-sm font-medium text-secondary">{edu.field}</span>
+                              </div>
+                            )}
+                            {edu.score && (
+                              <div className="flex items-center justify-between mt-3">
+                                <span className="text-sm text-muted-foreground">Academic Score:</span>
+                                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                                  {edu.score}
+                                </div>
                               </div>
                             )}
                           </div>
