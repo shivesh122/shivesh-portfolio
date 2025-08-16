@@ -26,7 +26,7 @@ const Hero = () => {
                   <span className="text-gradient">Shivesh Tiwari</span>
                 </h1>
                 <p className="text-xl sm:text-2xl text-muted-foreground mt-2">
-                  I'm a <span className="text-primary font-semibold bg-primary/10 px-3 py-1 rounded-lg">Data Analyst</span> & <span className="text-accent font-semibold bg-accent/10 px-3 py-1 rounded-lg">Data Science Expert</span>
+                  I'm a <span className="text-primary font-semibold">Data Analyst</span> & <span className="text-primary font-semibold">Data Science Expert</span>
                 </p>
               </div>
 
