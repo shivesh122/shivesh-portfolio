@@ -130,52 +130,56 @@ const Skills = () => {
 
         {/* Languages Section */}
         <div className={cn(
-          "mb-12",
+          "mb-8",
           isVisible ? "animate-fade-in" : "opacity-0"
         )}>
-          <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
-            <Code className="h-6 w-6" />
-            Programming Languages
-          </h3>
-          <div className="flex flex-wrap gap-4">
-            {languages.map((lang, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
-                  lang.color
-                )}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {lang.name}
-              </div>
-            ))}
-          </div>
+          <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/60 shadow-sm">
+            <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
+              <Code className="h-6 w-6" />
+              Programming Languages
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {languages.map((lang, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
+                    lang.color
+                  )}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {lang.name}
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
 
         {/* Tools Section */}
         <div className={cn(
-          "mb-12",
+          "mb-8",
           isVisible ? "animate-fade-in" : "opacity-0"
         )}>
-          <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
-            <Database className="h-6 w-6" />
-            Tools & Platforms
-          </h3>
-          <div className="flex flex-wrap gap-4">
-            {tools.map((tool, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
-                  tool.color
-                )}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {tool.name}
-              </div>
-            ))}
-          </div>
+          <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/60 shadow-sm">
+            <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
+              <Database className="h-6 w-6" />
+              Tools & Platforms
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {tools.map((tool, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
+                    tool.color
+                  )}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {tool.name}
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
 
         {/* Core Concepts Section */}
@@ -183,24 +187,26 @@ const Skills = () => {
           "mb-12",
           isVisible ? "animate-fade-in" : "opacity-0"
         )}>
-          <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
-            <Brain className="h-6 w-6" />
-            Core Concepts & Libraries
-          </h3>
-          <div className="flex flex-wrap gap-4">
-            {concepts.map((concept, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
-                  concept.color
-                )}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {concept.name}
-              </div>
-            ))}
-          </div>
+          <Card className="p-6 bg-card/60 backdrop-blur-sm border-border/60 shadow-sm">
+            <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-3">
+              <Brain className="h-6 w-6" />
+              Core Concepts & Libraries
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {concepts.map((concept, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg",
+                    concept.color
+                  )}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {concept.name}
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
 
         {/* Stats strip */}
