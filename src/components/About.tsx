@@ -118,17 +118,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-
-            {/* Education Section */}
-            <div className={`space-y-6 lg:space-y-8 transition-all duration-1000 delay-400 relative ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <div className="flex items-center space-x-3 mb-6 sm:mb-8">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                  <GraduationCap className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary">Education Journey</h3>
-              </div>
               
               {/* Animated Sun Journey */}
               <div className="absolute left-6 top-16 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30 h-full rounded-full -z-10"></div>
