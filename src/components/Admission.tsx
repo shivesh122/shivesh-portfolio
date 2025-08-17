@@ -45,27 +45,25 @@ const Admission = () => {
 
   const admissionData = [
     {
-      title: "Bachelor Of Technology (Computer Science and Engineering AI & ML)",
-      period: "2022 - 2026", 
-      institution: "KIPM COLLEGE OF ENGINEERING AND TECHNOLOGY",
-      description: "Initial exposure to programming fundamentals, web development, and computer hardware. Built strong technical foundation in Data Science and Machine Learning",
+      title: "Master of Computer Science",
+      period: "2015 - 2016",
+      institution: "University of XYZ",
+      description: "Advanced studies in machine learning, data structures, and algorithm optimization. Specialized in artificial intelligence and distributed systems architecture.",
+      isActive: false
+    },
+    {
+      title: "Bachelor of Computer Science", 
+      period: "2010 - 2014",
+      institution: "University of ABC",
+      description: "Comprehensive foundation in computer science principles, software engineering, and database management systems. Graduated with honors.",
+      isActive: false
+    },
+    {
+      title: "Diploma in Computer Science",
+      period: "2006 - 2010", 
+      institution: "XYZ Institution",
+      description: "Initial exposure to programming fundamentals, web development, and computer hardware. Built strong technical foundation.",
       isActive: true
-    },
-    
-    {
-      title: "12th Grade", 
-      period: "2021 - 2022",
-      institution: "SARASWATI VIDYA MANDIR, CBSE",
-      description: "Going deeper in same subjects like Science (physics, chemistry), Mathematics",
-      isActive: false
-    },
-    
-    {
-      title: "10th Grade",
-      period: "2019 - 2020",
-      institution: "SARASWATI VIDYA MANDIR, CBSE",
-      description: "Learn the core concepts of Science, Mathematics and Social science",
-      isActive: false
     }
   ];
 
