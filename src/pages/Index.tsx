@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import { Suspense, lazy } from "react";
 
 const About = lazy(() => import("@/components/About"));
+const Admission = lazy(() => import("@/components/Admission"));
 const Skills = lazy(() => import("@/components/Skills"));
 const Services = lazy(() => import("@/components/Services"));
 const Projects = lazy(() => import("@/components/Projects"));
@@ -40,6 +41,11 @@ const Index = () => {
           <section id="about" className="relative">
             <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
               <About />
+            </Suspense>
+          </section>
+          <section id="admission" className="relative">
+            <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
+              <Admission />
             </Suspense>
           </section>
           <section id="skills" className="relative">
