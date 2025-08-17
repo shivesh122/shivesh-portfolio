@@ -46,32 +46,6 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isVisible]);
 
-  const educationData = [
-    {
-      degree: "B.Tech (Final Year)",
-      institution: "KIPM College of Engineering & Technology",
-      field: "Engineering",
-      icon: GraduationCap,
-      gradient: "from-primary/20 to-secondary/20"
-    },
-    {
-      degree: "12th Grade",
-      institution: "Saraswati Vidya Mandir, CBSE",
-      field: "83% Score",
-      score: "83%",
-      icon: Award,
-      gradient: "from-secondary/20 to-accent/20"
-    },
-    {
-      degree: "10th Grade", 
-      institution: "Saraswati Vidya Mandir, CBSE",
-      field: "93% Score",
-      score: "93%",
-      icon: Award,
-      gradient: "from-accent/20 to-primary/20"
-    }
-  ];
-
   return (
     <section ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
