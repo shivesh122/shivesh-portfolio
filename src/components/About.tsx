@@ -5,7 +5,9 @@ import { GraduationCap, Award, Calendar, MapPin } from "lucide-react";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [sunPosition, setSunPosition] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const educationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +23,28 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (educationRef.current && isVisible) {
+        const rect = educationRef.current.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        
+        // Calculate scroll progress within the education section
+        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
+          const progress = Math.max(0, Math.min(1, (viewportHeight - sectionTop) / (viewportHeight + sectionHeight)));
+          setSunPosition(progress * 100);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isVisible]);
 
   const educationData = [
     {
@@ -122,7 +146,7 @@ const About = () => {
             </div>
 
             {/* Education Section */}
-            <div className={`space-y-6 lg:space-y-8 transition-all duration-1000 delay-400 ${
+            <div className={`space-y-6 lg:space-y-8 transition-all duration-1000 delay-400 relative ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}>
               <div className="flex items-center space-x-3 mb-6 sm:mb-8">
@@ -132,7 +156,19 @@ const About = () => {
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary">Education Journey</h3>
               </div>
               
-              <div className="space-y-4 sm:space-y-6">
+              {/* Animated Sun Journey */}
+              <div className="absolute left-6 top-16 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30 h-full rounded-full -z-10"></div>
+              <div 
+                className="absolute left-3 transition-all duration-300 ease-out z-20"
+                style={{ 
+                  top: `${16 + (sunPosition * 2)}px`,
+                  transform: 'translateX(-50%)'
+                }}
+              >
+                <div className="text-2xl animate-pulse">🌞</div>
+              </div>
+              
+              <div ref={educationRef} className="space-y-4 sm:space-y-6 relative z-10">
                 {educationData.map((edu, index) => (
                   <Card 
                     key={index}
