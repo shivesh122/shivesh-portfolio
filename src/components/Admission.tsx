@@ -47,7 +47,7 @@ const Admission = () => {
     {
       title: "Bachelor Of Technology (Computer Science and Engineering AI & ML)",
       period: "2022 - 2026", 
-      Score : "8.7 CGPA",
+      field : "8.7 CGPA",
       institution: "KIPM COLLEGE OF ENGINEERING AND TECHNOLOGY",
       description: "Initial exposure to programming fundamentals, web development, and computer hardware. Built strong technical foundation in Data Science and Machine Learning",
       isActive: true
@@ -56,7 +56,7 @@ const Admission = () => {
     {
       title: "12th Grade", 
       period: "2021 - 2022",
-      Score : "83 %",
+      field : "83 %",
       institution: "SARASWATI VIDYA MANDIR, CBSE",
       description: "Going deeper in same subjects like Science (physics, chemistry), Mathematics",
       isActive: false
@@ -65,7 +65,7 @@ const Admission = () => {
     {
       title: "10th Grade",
       period: "2019 - 2020",
-      Score : "93 %",
+      field : "93 %",
       institution: "SARASWATI VIDYA MANDIR, CBSE",
       description: "Learn the core concepts of Science, Mathematics and Social science",
       isActive: false
