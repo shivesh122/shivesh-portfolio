@@ -46,32 +46,6 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isVisible]);
 
-  const educationData = [
-    {
-      degree: "B.Tech (Final Year)",
-      institution: "KIPM College of Engineering & Technology",
-      field: "Engineering",
-      icon: GraduationCap,
-      gradient: "from-primary/20 to-secondary/20"
-    },
-    {
-      degree: "12th Grade",
-      institution: "Saraswati Vidya Mandir, CBSE",
-      field: "83% Score",
-      score: "83%",
-      icon: Award,
-      gradient: "from-secondary/20 to-accent/20"
-    },
-    {
-      degree: "10th Grade", 
-      institution: "Saraswati Vidya Mandir, CBSE",
-      field: "93% Score",
-      score: "93%",
-      icon: Award,
-      gradient: "from-accent/20 to-primary/20"
-    }
-  ];
-
   return (
     <section ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
@@ -142,88 +116,6 @@ const About = () => {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-
-            {/* Education Section */}
-            <div className={`space-y-6 lg:space-y-8 transition-all duration-1000 delay-400 relative ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <div className="flex items-center space-x-3 mb-6 sm:mb-8">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                  <GraduationCap className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary">Education Journey</h3>
-              </div>
-              
-              {/* Animated Sun Journey */}
-              <div className="absolute left-6 top-16 w-0.5 bg-gradient-to-b from-primary/30 to-secondary/30 h-full rounded-full -z-10"></div>
-              <div 
-                className="absolute left-3 transition-all duration-300 ease-out z-20"
-                style={{ 
-                  top: `${16 + (sunPosition * 2)}px`,
-                  transform: 'translateX(-50%)'
-                }}
-              >
-                <div className="text-2xl animate-pulse">🌞</div>
-              </div>
-              
-              <div ref={educationRef} className="space-y-4 sm:space-y-6 relative z-10">
-                {educationData.map((edu, index) => (
-                  <Card 
-                    key={index}
-                    className={`bg-gradient-to-r ${edu.gradient} border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 card-hover-effect perspective-card animate-fade-in-up overflow-hidden group`}
-                    style={{ animationDelay: `${0.6 + index * 0.2}s` }}
-                  >
-                    <div className="p-6 sm:p-8 relative">
-                      {/* Background pattern */}
-                      <div className="absolute top-0 right-0 w-20 h-20 opacity-10">
-                        <edu.icon className="w-full h-full" />
-                      </div>
-                      
-                      <div className="relative z-10 space-y-3">
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                            <edu.icon className="h-6 w-6 text-primary" />
-                          </div>
-                          
-                          <div className="flex-1 space-y-2">
-                            <h4 className="font-semibold text-primary text-lg">{edu.degree}</h4>
-                            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                              <MapPin className="h-4 w-4" />
-                              <span>{edu.institution}</span>
-                            </div>
-                            {edu.field && (
-                              <div className="flex items-center space-x-2">
-                                <Calendar className="h-4 w-4 text-secondary" />
-                                <span className="text-sm font-medium text-secondary">{edu.field}</span>
-                              </div>
-                            )}
-                            {edu.score && (
-                              <div className="flex items-center justify-between mt-3">
-                                <span className="text-sm text-muted-foreground">Academic Score:</span>
-                                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold shadow-md">
-                                  {edu.score}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        
-                        {/* Progress indicator */}
-                        <div className="w-full bg-primary/10 h-1 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000 ease-out"
-                            style={{ 
-                              width: isVisible ? '100%' : '0%',
-                              transitionDelay: `${0.8 + index * 0.2}s`
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
               </div>
             </div>
           </div>
