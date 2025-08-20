@@ -116,6 +116,18 @@ const About = () => {
                     </div>
                   ))}
                 </div>
+                  {/* Right Column - Video */}
+                    <div className="flex justify-center lg:justify-end">
+                    <video
+                    src="/profile.mp4"
+                    autoPlay
+                    loop
+                    muted
+                   playsInline
+                   className="rounded-2xl shadow-lg w-80 h-80 object-cover"
+                   />
+                  </div>
+                </div> 
               </div>
             </div>
           </div>
