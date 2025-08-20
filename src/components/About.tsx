@@ -8,6 +8,7 @@ const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const educationRef = useRef<HTMLDivElement>(null);
 
+  // Section visibility observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,6 +24,7 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Scroll animation for highlights
   useEffect(() => {
     const handleScroll = () => {
       if (educationRef.current && isVisible) {
@@ -36,8 +38,7 @@ const About = () => {
             0,
             Math.min(
               1,
-              (viewportHeight - sectionTop) /
-                (viewportHeight + sectionHeight)
+              (viewportHeight - sectionTop) / (viewportHeight + sectionHeight)
             )
           );
           setSunPosition(progress * 100);
@@ -82,7 +83,7 @@ const About = () => {
           </div>
 
           {/* Grid with Bio + Video */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
             {/* Bio Section */}
             <div
               className={`space-y-6 lg:space-y-8 transition-all duration-1000 delay-200 ${
@@ -102,8 +103,8 @@ const About = () => {
                 <div className="space-y-4 sm:space-y-6 text-muted-foreground leading-relaxed">
                   <p className="responsive-body">
                     A dedicated Data Analyst with deep expertise in Data
-                    Science, passionate about transforming complex datasets
-                    into strategic business insights. I specialize in advanced
+                    Science, passionate about transforming complex datasets into
+                    strategic business insights. I specialize in advanced
                     statistical analysis, predictive modeling, data
                     visualization, and developing comprehensive business
                     intelligence solutions that drive organizational growth.
@@ -169,15 +170,15 @@ const About = () => {
 
             {/* Video Section */}
             <div
-              className={`transition-all duration-1000 delay-300 ${
+              className={`transition-all duration-1000 delay-300 flex ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 translate-x-10"
               }`}
             >
-              <div className="rounded-2xl overflow-hidden shadow-lg border border-border/50">
+              <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg border border-border/50">
                 <video
-                  src="/public/ezgif-1c1f0eb6e3b4d9 (1).mp4" // <-- Replace with your video file path in public/videos
+                  src="/public/ezgif-1c1f0eb6e3b4d9 (1).mp4" // <-- Replace with your video path
                   autoPlay
                   loop
                   muted
