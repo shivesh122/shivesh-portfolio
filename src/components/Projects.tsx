@@ -28,8 +28,8 @@ const Projects = () => {
       description: "Machine learning-powered recommendation system that provides personalized movie suggestions based on user preferences, viewing history, and collaborative filtering.",
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
       image: "https://i.ibb.co/JwNxymnv/movie-recommendation.png",
-      github: "https://github.com/shivesh122/Movie-Recommendation-model-",
-      live: "https://github.com/shivesh122/Movie-Recommendation-model-",
+      github: "https://github.com/shivesh122/movie-Recommendation",
+      live: "https://github.com/shivesh122/movie-Recommendation",
       gradient: "from-purple-500/20 to-blue-500/20"
     },
     {
@@ -46,8 +46,8 @@ const Projects = () => {
       description: "Employee management system for BLW organization featuring comprehensive employee data management, dashboard analytics, and administrative functionalities.",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       image: "/lovable-uploads/4335dc7b-2b4a-4bb1-91a6-62395704fd29.png",
-      github: "https://github.com/shivesh122/blw-employee-nexus-hub",
-      live: "https://blw-employee-nexus-hub.vercel.app/",
+      github: "https://github.com/shivesh122/BLW-Employee-Nexus-Hub",
+      live: "https://blw-employee-nexus-hub.vercel.app",
       gradient: "from-cyan-500/20 to-teal-500/20"
     },
     {
@@ -55,7 +55,7 @@ const Projects = () => {
       description: "Machine learning application that predicts passenger survival on the Titanic using historical data. Features batch CSV prediction capabilities and an intuitive web interface for individual predictions.",
       tech: ["Python", "Streamlit", "Machine Learning", "Pandas", "Scikit-learn"],
       image: "/lovable-uploads/40fa6509-20a0-44c9-a08e-908375f37a3e.png",
-      github: "https://github.com/shivesh122/Titanic-servival-prediction-model-",
+      github: "https://github.com/shivesh122/Titanic-servival-prediction-model",
       live: "https://7dtzqkmvoc7rw5fzmthw33.streamlit.app/",
       gradient: "from-blue-500/20 to-indigo-500/20"
     }
