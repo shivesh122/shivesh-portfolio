@@ -29,7 +29,7 @@ const Projects = () => {
       tech: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
       image: "https://i.ibb.co/JwNxymnv/movie-recommendation.png",
       github: "https://github.com/shivesh122/movie-Recommendation",
-      live: "https://github.com/shivesh122/movie-Recommendation",
+      live: "https://movie-recommendation-nbkm.onrender.com",
       gradient: "from-purple-500/20 to-blue-500/20"
     },
     {
@@ -56,7 +56,16 @@ const Projects = () => {
       tech: ["Python", "Streamlit", "Machine Learning", "Pandas", "Scikit-learn"],
       image: "/lovable-uploads/40fa6509-20a0-44c9-a08e-908375f37a3e.png",
       github: "https://github.com/shivesh122/Titanic-servival-prediction-model-",
-      live: "https://7dtzqkmvoc7rw5fzmthw33.streamlit.app/",
+      live: "https://titanic-servival-prediction-model.onrender.com",
+      gradient: "from-blue-500/20 to-indigo-500/20"
+    },
+     {
+      title: "Custumer Churn Prediction",
+      description: "A machine learning model that predicts customer churn, helping businesses identify at-risk customers and improve retention strategies.",
+      tech: ["Python", "Streamlit", "Machine Learning", "Pandas", "Scikit-learn"],
+      image: "/lovable-uploads/40fa6509-20a0-44c9-a08e-908375f37a3e.png",
+      github: "https://github.com/shivesh122/customer-churn-prediction",
+      live: "https://customer-churn-prediction-7f8c.onrender.com",
       gradient: "from-blue-500/20 to-indigo-500/20"
     }
   ];
