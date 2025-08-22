@@ -4,7 +4,7 @@ import { Github, Mail, Linkedin, Download, Phone, MapPin } from "lucide-react";
 
 const Hero = () => {
   const handleDownloadResume = () => {
-    window.open('https://drive.google.com/file/d/1F90xwqi47XZPuNururSnH1ChfqcYl32T/view?usp=drivesdk', '_blank');
+    window.open('https://drive.google.com/file/d/1N4ckJfbFHSYgF17FJJjnel3WLHNmmTLK/view?usp=drivesdk', '_blank');
   };
 
   return (
