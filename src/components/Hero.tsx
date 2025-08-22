@@ -108,7 +108,7 @@ const Hero = () => {
                       }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-primary bg-muted" style={{ display: 'none' }}>
-                      ST
+                      🅢🅣
                     </div>
                   </div>
                 </div>
