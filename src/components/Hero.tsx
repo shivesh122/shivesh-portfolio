@@ -34,8 +34,8 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start text-sm text-muted-foreground animate-slide-up" style={{ animationDelay: '0.2s' }}>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-primary" />
-                  <a href="tel:+918676842176" className="hover:text-primary transition-colors">
-                    +91 8676842176
+                  <a href="tel:+919554193106" className="hover:text-primary transition-colors">
+                    +91 9554193106
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
