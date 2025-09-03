@@ -83,10 +83,10 @@ const Contact = () => {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Let's Connect
+              🎯 Ready for Our Next Quest?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ready to turn data into insights? Let's discuss how we can solve your data challenges together.
+              Got a data mystery to solve? A digital challenge to conquer? Let's team up and turn your wildest data dreams into reality! 🚀✨
             </p>
           </div>
 
@@ -94,7 +94,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <h3 className="text-2xl font-semibold text-foreground mb-6">
-                Get In Touch
+                🎮 Player Connection Hub
               </h3>
               
               <div className="space-y-6">
@@ -177,7 +177,7 @@ const Contact = () => {
                         rows={4}
                         value={formData.message}
                         onChange={handleInputChange}
-                        placeholder="Tell me about your project..."
+                        placeholder="Tell me about your epic quest... What data dragons need slaying? 🐉"
                         required
                         className="bg-input border-border resize-none"
                       />
@@ -187,10 +187,10 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-elegant"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-elegant hover:scale-105 transform transition-all duration-300 group"
                   >
-                    <Send className="mr-2 h-5 w-5" />
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <Send className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                    {isSubmitting ? '🚀 Launching Message...' : '🎯 Send Epic Message'}
                   </Button>
                 </form>
               </div>
