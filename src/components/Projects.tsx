@@ -67,6 +67,15 @@ const Projects = () => {
       github: "https://github.com/shivesh122/customer-churn-prediction",
       live: "https://customer-churn-prediction-7f8c.onrender.com",
       gradient: "from-blue-500/20 to-indigo-500/20"
+    },
+    {
+      title: "Fixtral",
+      description: "Revolutionize your image editing with AI-powered Photoshop assistance. Automate edits from Reddit's r/PhotoshopRequest using Google Gemini AI.",
+      tech: ["React", "AI/ML", "Google Gemini", "Next.js", "Image Processing"],
+      image: "/lovable-uploads/84ba3fb3-6a1a-4013-8b55-5a93b37688fe.png",
+      github: "https://github.com/shivesh122/Fixtral",
+      live: "https://fixtralai.vercel.app",
+      gradient: "from-yellow-500/20 to-orange-500/20"
     }
   ];
 
