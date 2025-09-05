@@ -76,6 +76,15 @@ const Projects = () => {
       github: "https://github.com/shivesh122/Fixtral",
       live: "https://fixtralai.vercel.app",
       gradient: "from-yellow-500/20 to-orange-500/20"
+    },
+   {
+      title: "Pizza Sales Dashboard",
+      description: "This is Interactive data visualization dashboard project is a self-learning initiative by me, focusing on analyzing Pizza Sales report using POWER BI and SQL Server data using data visualization and analytics techniques.",
+      tech: ["MySQL","Power BI", "Excel", "Data Analysis", "DAX"],
+      image: "/lovable-uploads/Pizza_Sales.png",
+      github: "https://github.com/shivesh122/Pizza-Sales-Dashboard",
+      live: "https://app.powerbi.com/view?r=eyJrIjoiM2Y3M2QwNTgtMTVlZi00ZmU4LTg0M2MtZGY0NTNmZDlhNjUyIiwidCI6IjFlYjk4MmNlLThkZTgtNDllMi1iMDA4LTNiYjJmYjg1NzU1YyJ9",
+      gradient: "from-orange-500/20 to-amber-500/20"
     }
   ];
 
