@@ -1,13 +1,10 @@
 
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-import { GraduationCap, Award, Calendar, MapPin } from "lucide-react";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [sunPosition, setSunPosition] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const educationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,28 +20,6 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (educationRef.current && isVisible) {
-        const rect = educationRef.current.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-        
-        // Calculate scroll progress within the education section
-        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
-          const progress = Math.max(0, Math.min(1, (viewportHeight - sectionTop) / (viewportHeight + sectionHeight)));
-          setSunPosition(progress * 100);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isVisible]);
 
   return (
     <section ref={sectionRef} className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
@@ -70,7 +45,7 @@ const About = () => {
           </div>
 
           {/* Main Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 gap-8 md:gap-12 lg:gap-16">
             {/* Bio Section */}
             <div className={`space-y-6 md:space-y-8 transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
@@ -96,111 +71,6 @@ const About = () => {
                     Currently leveraging my expertise to help organizations optimize operations, improve performance metrics, and make data-driven decisions. 
                     I'm passionate about continuous learning in emerging analytics technologies and methodologies.
                   </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Education Timeline */}
-            <div ref={educationRef} className={`transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <div className="relative pl-6">
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-primary mb-6 sm:mb-8">
-                  Education Journey
-                </h3>
-                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-secondary rounded-full"></div>
-              </div>
-
-              {/* Education Timeline */}
-              <div className="relative ml-6">
-                {/* Animated Sun */}
-                <div 
-                  className="absolute -left-8 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-lg transition-all duration-500 ease-out shadow-lg z-10"
-                  style={{ 
-                    top: `${sunPosition}%`,
-                    transform: 'translateY(-50%)',
-                    boxShadow: '0 0 20px rgba(251, 191, 36, 0.5)'
-                  }}
-                >
-                  🌞
-                </div>
-
-                {/* Timeline Line */}
-                <div className="absolute -left-6 top-0 w-0.5 h-full bg-gradient-to-b from-primary/30 via-secondary/30 to-accent/30"></div>
-
-                {/* Education Items */}
-                <div className="space-y-8 sm:space-y-12">
-                  {[
-                    {
-                      year: "2022 - 2026",
-                      degree: "Bachelor of Technology",
-                      field: "Computer Science & Engineering",
-                      institution: "KIPM COLLEGE OF ENGINEERING AND TECHNOLOGY",
-                      location: "Uttar Pradesh, India",
-                      icon: GraduationCap,
-                      status: "Pursuing"
-                    },
-                    {
-                      year: "2021 - 2022",
-                      degree: "Senior Secondary (XII)",
-                      field: "Science (PCM)",
-                      institution: "Saraswati Vidya Mandir, Deoria",
-                      location: "Uttar Pradesh, India",  
-                      icon: Award,
-                      status: "Completed"
-                    },
-                    {
-                      year: "2019 - 2020",
-                      degree: "High School (X)",
-                      field: "General Studies",
-                      institution: "Saraswati Vidya Mandir, Deoria",
-                      location: "Uttar Pradesh, India",
-                      icon: Award,
-                      status: "Completed"
-                    }
-                  ].map((item, index) => (
-                    <Card 
-                      key={index}
-                      className="relative bg-card/50 backdrop-blur-sm border border-border/50 p-4 sm:p-6 ml-4 shadow-card hover:shadow-hover transition-all duration-300 hover:scale-[1.02]"
-                    >
-                      {/* Timeline Dot */}
-                      <div className="absolute -left-6 top-6 w-3 h-3 bg-primary rounded-full border-2 border-background shadow-sm"></div>
-                      
-                      <div className="space-y-2 sm:space-y-3">
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                          <div className="flex items-center gap-2">
-                            <item.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-                            <span className="text-xs sm:text-sm font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
-                              {item.year}
-                            </span>
-                          </div>
-                          <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                            item.status === 'Pursuing' 
-                              ? 'bg-green-500/10 text-green-600 border border-green-500/20' 
-                              : 'bg-blue-500/10 text-blue-600 border border-blue-500/20'
-                          }`}>
-                            {item.status}
-                          </span>
-                        </div>
-                        
-                        <h4 className="text-sm sm:text-base font-semibold text-foreground">
-                          {item.degree}
-                        </h4>
-                        <p className="text-xs sm:text-sm text-primary font-medium">
-                          {item.field}
-                        </p>
-                        <div className="space-y-1">
-                          <p className="text-xs sm:text-sm text-muted-foreground">
-                            {item.institution}
-                          </p>
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <MapPin className="h-3 w-3" />
-                            {item.location}
-                          </div>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
                 </div>
               </div>
             </div>
