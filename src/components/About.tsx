@@ -132,28 +132,28 @@ const About = () => {
                 <div className="space-y-8 sm:space-y-12">
                   {[
                     {
-                      year: "2021 - 2025",
+                      year: "2022 - 2026",
                       degree: "Bachelor of Technology",
                       field: "Computer Science & Engineering",
-                      institution: "Kamla Nehru Institute of Technology, Sultanpur",
+                      institution: "KIPM COLLEGE OF ENGINEERING AND TECHNOLOGY",
                       location: "Uttar Pradesh, India",
                       icon: GraduationCap,
                       status: "Pursuing"
                     },
                     {
-                      year: "2019 - 2021",
+                      year: "2021 - 2022",
                       degree: "Senior Secondary (XII)",
                       field: "Science (PCM)",
-                      institution: "Government Inter College, Gola Gokarnath",
+                      institution: "Saraswati Vidya Mandir, Deoria",
                       location: "Uttar Pradesh, India",  
                       icon: Award,
                       status: "Completed"
                     },
                     {
-                      year: "2017 - 2019",
-                      degree: "Secondary (X)",
+                      year: "2019 - 2020",
+                      degree: "High School (X)",
                       field: "General Studies",
-                      institution: "Government Inter College, Gola Gokarnath",
+                      institution: "Saraswati Vidya Mandir, Deoria",
                       location: "Uttar Pradesh, India",
                       icon: Award,
                       status: "Completed"
