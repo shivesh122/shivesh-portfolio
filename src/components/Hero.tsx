@@ -74,7 +74,7 @@ const Hero = () => {
               <div className="flex justify-center lg:justify-start space-x-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
                 {[
                   { href: "https://github.com/shivesh122", icon: Github, label: "GitHub" },
-                  { href: "https://linkedin.com/in/shivesh-tiwari-68b79a245", icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://www.linkedin.com/in/shivesh--tiwari", icon: Linkedin, label: "LinkedIn" },
                   { href: "mailto:nikutiwari70@gmail.com", icon: Mail, label: "Email" }
                 ].map((social) => (
                   <a 
