@@ -2,6 +2,17 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
+
+const Projects = () => (
+  <>
+    <Helmet>
+      <title>Projects | Shivesh Tiwari</title>
+      <meta name="description" content="View Shivesh Tiwari's AI and Data Analytics projects." />
+    </Helmet>
+    {/* Your page content */}
+  </>
+);
 
 const Projects = () => {
   const projects = [
