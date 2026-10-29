@@ -4,7 +4,7 @@ import { Github, Mail, Linkedin, Download, Phone, MapPin } from "lucide-react";
 
 const Hero = () => {
   const handleDownloadResume = () => {
-    window.open('https://drive.google.com/file/d/1gLPflyupvUM4x69FbPUOCugjw0O3PoD7/view?usp=drivesdk', '_blank');
+    window.open('/Shivesh_Tiwari_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -26,7 +26,7 @@ const Hero = () => {
                   <span className="text-gradient">Shivesh Tiwari</span>
                 </h1>
                 <p className="text-xl sm:text-2xl text-muted-foreground mt-2">
-                  I'm a <span className="text-primary font-semibold">Data Analyst</span> & <span className="text-primary font-semibold">Data Science Expert</span>
+                  I'm a <span className="text-primary font-semibold">Data Analyst</span> & <span className="text-primary font-semibold">Machine Learning Engineer</span>
                 </p>
               </div>
 
@@ -99,7 +99,7 @@ const Hero = () => {
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-background shadow-xl relative">
                     <img 
                       src="/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png" 
-                      alt="Shivesh Tiwari - Data Engineer"
+                      alt="Shivesh Tiwari, Data Analyst and Machine Learning Engineer"
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';

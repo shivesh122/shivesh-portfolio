@@ -77,10 +77,17 @@ const Skills = () => {
     { name: "PHP", color: "bg-[#777BB4] text-white" },
     { name: "TYPESCRIPT", color: "bg-[#3178c6] text-white" },
     { name: "MYSQL", color: "bg-[#4479A1] text-white" },
+    { name: "SQL", color: "bg-[#CC2927] text-white" },
+    { name: "JAVASCRIPT", color: "bg-[#F7DF1E] text-black" },
+    { name: "DAX", color: "bg-[#F2C811] text-black" },
   ];
 
   const tools = [
     { name: "POWER BI", color: "bg-[#F2C811] text-black" },
+    { name: "BIGQUERY", color: "bg-[#669DF6] text-white" },
+    { name: "GOOGLE ANALYTICS 4", color: "bg-[#E37400] text-white" },
+    { name: "EXCEL", color: "bg-[#217346] text-white" },
+    { name: "GITHUB ACTIONS", color: "bg-[#2088FF] text-white" },
     { name: "AWS", color: "bg-[#FF9900] text-white" },
     { name: "GOOGLECLOUD", color: "bg-[#4285F4] text-white" },
     { name: "ORACLE", color: "bg-[#F80000] text-white" },
@@ -99,6 +106,9 @@ const Skills = () => {
     { name: "PANDAS", color: "bg-[#150458] text-white" },
     { name: "SCIKIT-LEARN", color: "bg-[#F7931E] text-white" },
     { name: "NUMPY", color: "bg-[#013243] text-white" },
+    { name: "NODE.JS", color: "bg-[#339933] text-white" },
+    { name: "EXPRESS", color: "bg-[#000000] text-white" },
+    { name: "D3.JS", color: "bg-[#F9A03C] text-black" },
   ];
 
   return (
