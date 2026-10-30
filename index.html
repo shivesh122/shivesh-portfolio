@@ -1,39 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Shivesh Nath Tiwari | Data Analyst & Machine Learning Engineer</title>
-    
+    <title>Shivesh Tiwari | Data Analyst &amp; Machine Learning Engineer</title>
     <meta name="description" content="Portfolio of Shivesh Nath Tiwari, Data Analyst and Machine Learning Engineer skilled in Python, SQL, Power BI and scikit-learn. Live projects in fraud detection, supply-chain analytics and full-stack development." />
-    
     <meta name="author" content="Shivesh Nath Tiwari" />
-    
-    <meta name="keywords" content="Shivesh Nath Tiwari, Data Analyst, AI Engineer, Python Developer, KIPM College, Machine Learning, Portfolio" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://i.ibb.co" crossorigin>
-    
+    <meta name="keywords" content="Shivesh Tiwari, Shivesh Nath Tiwari, Data Analyst, Machine Learning Engineer, Power BI, SQL, Python, Portfolio, KIPM College" />
+    <meta name="theme-color" content="#070b16" />
     <link rel="canonical" href="https://shiveshtiwari.in/" />
-    
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
 
-    <meta property="og:site_name" content="Shivesh Nath Tiwari Portfolio" />
-    <meta property="og:title" content="Shivesh Nath Tiwari | Data Analyst & AI Engineer" />
-    <meta property="og:description" content="Check out my Data Analytics and AI projects. Turning data into insights." />
+    <!-- Apply the saved / system theme before first paint (prevents a flash of the wrong theme) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Above-the-fold resources first -->
+    <link rel="preload" as="image" href="/img/profile-400.webp" imagesrcset="/img/profile-400.webp 400w, /img/profile-800.webp 800w" imagesizes="(max-width: 920px) 320px, 380px" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+    <link rel="dns-prefetch" href="https://i.ibb.co" />
+
+    <meta property="og:site_name" content="Shivesh Tiwari" />
+    <meta property="og:title" content="Shivesh Tiwari | Data Analyst & Machine Learning Engineer" />
+    <meta property="og:description" content="Live projects in fraud detection, supply-chain analytics and full-stack development. Python, SQL, Power BI, scikit-learn, React." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://shiveshtiwari.in/" />
-    
-    <meta property="og:image" content="https://shiveshtiwari.in/og-image.png" />
-
+    <meta property="og:image" content="https://shiveshtiwari.in/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Shivesh_Tiwari_" />
-    <meta name="twitter:title" content="Shivesh Nath Tiwari | Data Analyst" />
-    <meta name="twitter:description" content="Data Analyst & AI Engineer. View my latest projects." />
-    <meta name="twitter:image" content="https://shiveshtiwari.in/og-image.png" />
+    <meta name="twitter:title" content="Shivesh Tiwari | Data Analyst & Machine Learning Engineer" />
+    <meta name="twitter:description" content="Live projects in fraud detection, supply-chain analytics and full-stack development." />
+    <meta name="twitter:image" content="https://shiveshtiwari.in/og-image.jpg" />
 
     <script type="application/ld+json">
       {
@@ -42,8 +50,9 @@
         "name": "Shivesh Nath Tiwari",
         "jobTitle": "Data Analyst & Machine Learning Engineer",
         "url": "https://shiveshtiwari.in",
+        "email": "mailto:nikutiwari70@gmail.com",
         "alumniOf": "KIPM College of Engineering and Technology",
-        "image": "https://shiveshtiwari.in/lovable-uploads/a081b5d5-095a-451c-a45b-a9d99e8a8985.png",
+        "image": "https://shiveshtiwari.in/img/profile-800.webp",
         "sameAs": [
           "https://github.com/shivesh122",
           "https://www.linkedin.com/in/shivesh-nath-tiwari",
@@ -51,12 +60,14 @@
         ]
       }
     </script>
-    
     <meta name="google-site-verification" content="BfJg2nady4kwlaaywbI6-Xe2WfEAWgEwX5CI16gtws8" />
   </head>
 
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding:24px;font-family:system-ui,sans-serif">Shivesh Tiwari, Data Analyst &amp; Machine Learning Engineer. Please enable JavaScript to view this portfolio, or email <a href="mailto:nikutiwari70@gmail.com">nikutiwari70@gmail.com</a>.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

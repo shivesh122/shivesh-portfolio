@@ -1,66 +1,31 @@
-
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import { Suspense, lazy } from "react";
-
-const About = lazy(() => import("@/components/About"));
-const Admission = lazy(() => import("@/components/Admission"));
-const Skills = lazy(() => import("@/components/Skills"));
-const Services = lazy(() => import("@/components/Services"));
-const Projects = lazy(() => import("@/components/Projects"));
-const Experience = lazy(() => import("@/components/Experience"));
-const Contact = lazy(() => import("@/components/Contact"));
-const BackgroundAudio = lazy(() => import("@/components/BackgroundAudio"));
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import BackgroundAudio from "@/components/BackgroundAudio";
+import { useReveal } from "@/hooks/useReveal";
 
 const Index = () => {
+  useReveal();
   return (
     <>
-      <div className="min-h-screen bg-background">
-        <Navigation />
-        <main>
-          <section id="home" className="relative">
-            <Hero />
-          </section>
-          <section id="about" className="relative">
-            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <About />
-            </Suspense>
-          </section>
-          <section id="admission" className="relative">
-            <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Admission />
-            </Suspense>
-          </section>
-          <section id="skills" className="relative">
-            <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Skills />
-            </Suspense>
-          </section>
-          <section id="services" className="relative">
-            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Services />
-            </Suspense>
-          </section>
-          <section id="projects" className="relative">
-            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Projects />
-            </Suspense>
-          </section>
-          <section id="experience" className="relative">
-            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Experience />
-            </Suspense>
-          </section>
-          <section id="contact" className="relative">
-            <Suspense fallback={<div className="h-32 animate-pulse bg-muted/20 rounded-lg mx-4" aria-hidden="true" />}> 
-              <Contact />
-            </Suspense>
-          </section>
-        </main>
-        <Suspense fallback={null}>
-          <BackgroundAudio />
-        </Suspense>
-      </div>
+      <Navigation />
+      <main id="main">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+      <BackgroundAudio />
     </>
   );
 };

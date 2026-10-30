@@ -1,200 +1,102 @@
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { Download, Linkedin, Mail, MapPin, Phone, Send } from "@/components/icons";
+import { profile } from "@/data/portfolio";
 
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
+type Status = { kind: "ok" | "err"; text: string } | null;
+
+const EMAILJS = { service: "service_3iakb9i", template: "template_sqct42c", publicKey: "dkUnx6eA5mOjVX9DZ" };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<Status>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields",
-        variant: "destructive"
-      });
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setStatus({ kind: "err", text: "Please fill in all fields." });
       return;
     }
-
-    setIsSubmitting(true);
-
+    setSending(true);
+    setStatus(null);
     try {
+      // EmailJS is only downloaded when someone actually sends a message
+      const { default: emailjs } = await import("@emailjs/browser");
       await emailjs.send(
-        'service_3iakb9i',
-        'template_sqct42c',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'nikutiwari70@gmail.com'
-        },
-        'dkUnx6eA5mOjVX9DZ'
+        EMAILJS.service,
+        EMAILJS.template,
+        { from_name: form.name, from_email: form.email, message: form.message, to_email: profile.email },
+        EMAILJS.publicKey,
       );
-
-      toast({
-        title: "Success!",
-        description: "Your message has been sent successfully. I'll get back to you soon!",
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Email sending failed:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
-        variant: "destructive"
-      });
+      setStatus({ kind: "ok", text: "Thanks! Your message has been sent. I'll get back to you soon." });
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Email sending failed:", err);
+      setStatus({ kind: "err", text: `Sorry, the message couldn't be sent. Please email me at ${profile.email}.` });
     } finally {
-      setIsSubmitting(false);
+      setSending(false);
     }
   };
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Let's Connect
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ready to turn data into insights? Let's discuss how we can solve your data challenges together.
-            </p>
-          </div>
+    <section className="section" id="contact" aria-labelledby="contact-title">
+      <div className="container">
+        <div className="contact-card" data-reveal>
+          <div className="contact-inner">
+            <div className="contact-info">
+              <span className="eyebrow">06 · Contact</span>
+              <h2 id="contact-title">Let's build something with your data.</h2>
+              <p>Hiring for a Data Analyst or ML role, or have a project in mind? Send a message and I'll get back to you.</p>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <h3 className="text-2xl font-semibold text-foreground mb-6">
-                Get In Touch
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Email</p>
-                    <p className="text-muted-foreground">nikutiwari70@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Phone</p>
-                    <p className="text-muted-foreground">9554193106</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">Location</p>
-                    <p className="text-muted-foreground">India</p>
-                  </div>
+              <div className="contact-list">
+                <a href={`mailto:${profile.email}`}>
+                  <span className="ic"><Mail /></span>
+                  <span><small>Email</small><b>{profile.email}</b></span>
+                </a>
+                <a href={`tel:${profile.phone.replace(/\s/g, "")}`}>
+                  <span className="ic"><Phone /></span>
+                  <span><small>Phone</small><b>{profile.phone}</b></span>
+                </a>
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+                  <span className="ic"><Linkedin /></span>
+                  <span><small>LinkedIn</small><b>shivesh-nath-tiwari</b></span>
+                </a>
+                <div>
+                  <span className="ic"><MapPin /></span>
+                  <span><small>Location</small><b>{profile.location}</b></span>
                 </div>
               </div>
+
+              <a className="btn btn-ghost" href={profile.resume} target="_blank" rel="noopener">
+                <Download size={17} /> Download résumé (PDF)
+              </a>
             </div>
 
-            {/* Contact Form */}
-            <Card className="bg-card-gradient border-border/50 shadow-card">
-              <div className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="name" className="text-sm font-medium text-foreground mb-2">
-                        Name
-                      </Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Your name"
-                        required
-                        className="bg-input border-border"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email" className="text-sm font-medium text-foreground mb-2">
-                        Email
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="your.email@example.com"
-                        required
-                        className="bg-input border-border"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message" className="text-sm font-medium text-foreground mb-2">
-                        Message
-                      </Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        placeholder="Tell me about your project..."
-                        required
-                        className="bg-input border-border resize-none"
-                      />
-                    </div>
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-elegant"
-                  >
-                    <Send className="mr-2 h-5 w-5" />
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                </form>
+            <form className="form" onSubmit={onSubmit} noValidate>
+              <div className="field">
+                <label htmlFor="name">Name</label>
+                <input id="name" name="name" autoComplete="name" value={form.name} onChange={onChange} placeholder="Your name" required />
               </div>
-            </Card>
+              <div className="field">
+                <label htmlFor="email">Email</label>
+                <input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={onChange} placeholder="you@company.com" required />
+              </div>
+              <div className="field">
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" rows={5} value={form.message} onChange={onChange} placeholder="Tell me about the role or project…" required />
+              </div>
+              {status && (
+                <p className={`form-status ${status.kind}`} role={status.kind === "err" ? "alert" : "status"}>
+                  {status.text}
+                </p>
+              )}
+              <button className="btn btn-primary" type="submit" disabled={sending}>
+                <Send size={17} /> {sending ? "Sending…" : "Send message"}
+              </button>
+            </form>
           </div>
         </div>
       </div>

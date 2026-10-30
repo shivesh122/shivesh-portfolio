@@ -1,136 +1,100 @@
+import { useEffect, useState } from "react";
+import { nav, profile } from "@/data/portfolio";
+import { Close, Download, Menu, Moon, Sun } from "@/components/icons";
 
-import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+type Theme = "dark" | "light";
+
+const readTheme = (): Theme => (document.documentElement.dataset.theme === "light" ? "light" : "dark");
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const [theme, setTheme] = useState<Theme>(readTheme);
 
+  // Background appears after scrolling: passive listener, state only changes when the value flips
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Highlight the section currently in view
+  useEffect(() => {
+    const sections = nav.map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
+    if (!("IntersectionObserver" in window) || !sections.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5] },
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" }
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      /* storage unavailable */
     }
-    setIsMobileMenuOpen(false);
+    setTheme(next);
   };
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm' 
-          : 'bg-transparent'
-      }`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <button
-                onClick={() => scrollToSection('#home')}
-                className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
-              >
-                D
-              </button>
-            </div>
+      <a href="#main" className="skip-link">Skip to content</a>
+      <header className={`nav ${scrolled || open ? "scrolled" : ""}`}>
+        <div className="container nav-inner">
+          <a href="#top" className="brand" aria-label="Shivesh Tiwari, back to top">
+            <span className="brand-mark" aria-hidden="true">ST</span>
+            <span className="brand-name">Shivesh Tiwari</span>
+          </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {navItems.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300"
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-            </div>
+          <nav className="nav-links" aria-label="Primary">
+            {nav.map((n) => (
+              <a key={n.id} href={`#${n.id}`} className={active === n.id ? "active" : ""} aria-current={active === n.id ? "true" : undefined}>
+                {n.label}
+              </a>
+            ))}
+          </nav>
 
-            {/* Right side buttons */}
-            <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleTheme}
-                className="w-9 h-9 p-0"
-              >
-                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </Button>
-
-              <Button
-                variant="default"
-                size="sm"
-                className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground"
-                onClick={() => scrollToSection('#contact')}
-              >
-                Request a Project
-              </Button>
-
-              {/* Mobile menu button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="md:hidden w-9 h-9 p-0"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </Button>
-            </div>
+          <div className="nav-actions">
+            <button className="icon-btn" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}>
+              {theme === "dark" ? <Sun /> : <Moon />}
+            </button>
+            <a className="btn btn-ghost btn-sm resume-btn" href={profile.resume} target="_blank" rel="noopener">
+              <Download size={16} /> Résumé
+            </a>
+            <button className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"}>
+              {open ? <Close /> : <Menu />}
+            </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
-                >
-                  {item.name}
-                </button>
-              ))}
-              <Button
-                variant="default"
-                size="sm"
-                className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground"
-                onClick={() => scrollToSection('#contact')}
-              >
-                Request a Project
-              </Button>
-            </div>
-          </div>
-        )}
-      </nav>
+      <div id="mobile-menu" className="mobile-menu" hidden={!open}>
+        {nav.map((n) => (
+          <a key={n.id} href={`#${n.id}`} className={active === n.id ? "active" : ""} onClick={() => setOpen(false)}>
+            {n.label}
+          </a>
+        ))}
+        <a className="btn btn-primary" href={profile.resume} target="_blank" rel="noopener" onClick={() => setOpen(false)}>
+          <Download size={16} /> Download résumé
+        </a>
+      </div>
     </>
   );
 };
