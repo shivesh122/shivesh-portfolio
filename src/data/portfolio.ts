@@ -103,16 +103,16 @@ export const featuredProjects: Project[] = [
   {
     title: "ExpenseIQ: Full-Stack Expense Tracker",
     description:
-      "A MERN-stack web app with JWT authentication and a REST API for tracking and categorising expenses, monthly and category budgets with smart alerts, spending charts and CSV export.",
+      "A MERN finance app that predicts and explains spending: month-end forecasts with a confidence band, statistical anomaly detection, a financial health score, auto-categorisation, recurring payments and CSV import. Try the one-click live demo.",
     category: "Full-Stack",
-    tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "OpenAPI"],
     image: "/img/projects/expenseiq.webp",
     github: "https://github.com/shivesh122/expenseiq",
     live: "https://expenseiq-9h2k.onrender.com",
     metrics: [
-      { value: "JWT", label: "secure auth" },
-      { value: "REST", label: "API" },
-      { value: "CSV", label: "export" },
+      { value: "25+", label: "REST endpoints" },
+      { value: "53", label: "automated tests" },
+      { value: "1-click", label: "live demo" },
     ],
   },
 ];
