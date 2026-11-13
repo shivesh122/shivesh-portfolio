@@ -25,7 +25,8 @@ export const featuredCert = {
   issuer: "Microsoft",
   date: "Sep 2026",
   // Paste your Microsoft Learn credential link here to make the badge clickable / verifiable
-  url: "",
+  url: "https://learn.microsoft.com/en-us/users/shiveshtiwari-8109/credentials/certification/fabric-data-engineer-associate?tab=credentials-tab",
+  credentialId: "46DE4887910E1E3F",
 };
 
 /** The four reasons a hiring manager should keep reading. Every claim maps to a project or role below. */
@@ -96,6 +97,14 @@ export const skillGroups = [
   {
     title: "Machine Learning",
     items: ["Scikit-learn", "Pandas", "NumPy", "TensorFlow", "Matplotlib", "OpenCV", "Anomaly Detection", "Forecasting"],
+  },
+  {
+    title: "MLOps & CI/CD",
+    items: ["Model Deployment", "Performance Monitoring", "Fabric Deployment Pipelines", "Git Integration", "CI/CD", "REST APIs"],
+  },
+  {
+    title: "Data Engineering",
+    items: ["ETL / ELT Pipelines", "Data-Quality Checks", "Star Schema Modeling", "Fabric Lakehouse", "Fabric Warehouse", "OneLake"],
   },
   { title: "Databases", items: ["SQL Server", "MySQL", "MongoDB", "SQLite", "Firebase", "Oracle"] },
   { title: "Web", items: ["React", "Redux", "Node.js", "Express", "REST APIs", "D3.js", "Chart.js", "HTML & CSS"] },
@@ -265,8 +274,8 @@ export const experience = [
     period: "Aug 2025 – Present",
     current: true,
     points: [
-      "Build and maintain a Power BI KPI dashboard on Google Analytics 4 data via Google BigQuery to track app engagement, retention and user growth, and present insights to management.",
-      "Designed and deployed machine-learning solutions that automate core educational processes, integrating backend services with ML pipelines.",
+      "Designed and deployed scalable machine-learning solutions that automate core educational processes, integrating backend services with ML pipelines to improve performance and reliability in production.",
+      "Built an ETL pipeline from Google Analytics 4 via Google BigQuery into a Power BI KPI dashboard tracking engagement, retention and user growth, and present insights to management.",
     ],
     tags: ["Power BI", "BigQuery", "GA4", "Python", "ML"],
   },
@@ -298,7 +307,7 @@ export const education = [
     title: "B.Tech, Computer Science & Engineering (AI & ML)",
     place: "KIPM College of Engineering and Technology, Gorakhpur",
     period: "2022 – 2026",
-    score: "8.7 CGPA",
+    score: "8.5 CGPA",
   },
   { title: "Class 12 (CBSE)", place: "Saraswati Vidya Mandir", period: "2021 – 2022", score: "83%" },
   { title: "Class 10 (CBSE)", place: "Saraswati Vidya Mandir", period: "2019 – 2020", score: "93%" },

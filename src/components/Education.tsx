@@ -42,7 +42,7 @@ const Education = () => (
                   </span>
                   <span className="cert-text">
                     <small>
-                      {featuredCert.issuer} · {featuredCert.date}
+                      {featuredCert.issuer} · {featuredCert.date} · ID {featuredCert.credentialId}
                     </small>
                     <b>{featuredCert.name}</b>
                   </span>
