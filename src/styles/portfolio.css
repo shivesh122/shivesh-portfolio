@@ -620,3 +620,18 @@ a.cert-feature:hover { transform: translateY(-2px); border-color: var(--accent-2
 /* Count-up numbers sit inside label-styled parents: keep the parent's number styling */
 span.count { display: inline !important; font: inherit !important; color: inherit !important; margin: 0 !important; line-height: inherit !important; letter-spacing: inherit !important; }
 .grad-text span.count, .hl-value span.count { color: transparent !important; }
+
+/* Contact form states */
+.field-error { font-size: 13px; color: var(--danger); }
+.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--danger); }
+.field input:disabled, .field textarea:disabled { opacity: 0.6; }
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-status p + .status-actions { margin-top: 12px; }
+.status-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn:disabled { opacity: 0.75; cursor: progress; transform: none; }
+.spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: rot 0.7s linear infinite; }
+@keyframes rot { to { transform: rotate(360deg); } }
+.form-done { align-content: center; justify-items: start; text-align: left; min-height: 100%; }
+.form-done .done-ic { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok); animation: pop 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.form-done h3 { font-family: var(--display); font-size: 26px; letter-spacing: -0.02em; }
+.form-done p { color: var(--muted); }

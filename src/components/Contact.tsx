@@ -1,45 +1,167 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Download, Linkedin, Mail, MapPin, Phone, Send } from "@/components/icons";
+import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { Check, Copy, Download, Linkedin, Mail, MapPin, Phone, Send } from "@/components/icons";
 import { profile } from "@/data/portfolio";
 
-type Status = { kind: "ok" | "err"; text: string } | null;
+/*
+ * Contact form with a delivery chain, so a message is never silently lost:
+ *   1. EmailJS (REST API, no SDK)    -> lands in the inbox via the existing EmailJS template
+ *   2. FormSubmit (no account needed) -> backup if EmailJS is down, misconfigured or out of quota
+ *   3. If both fail, the visitor gets a pre-filled email draft + copy button, with their text kept
+ */
 
 const EMAILJS = { service: "service_3iakb9i", template: "template_sqct42c", publicKey: "dkUnx6eA5mOjVX9DZ" };
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${profile.email}`;
+const TIMEOUT_MS = 12000;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+type Fields = { name: string; email: string; message: string };
+type Errors = Partial<Record<keyof Fields, string>>;
+type Phase = "idle" | "sending" | "sent" | "failed";
+
+const validate = (f: Fields): Errors => {
+  const e: Errors = {};
+  if (f.name.trim().length < 2) e.name = "Please enter your name.";
+  if (!EMAIL_RE.test(f.email.trim())) e.email = "Please enter a valid email address.";
+  if (f.message.trim().length < 10) e.message = "Please write at least a short message (10+ characters).";
+  else if (f.message.length > 5000) e.message = "Please keep the message under 5,000 characters.";
+  return e;
+};
+
+const postJSON = async (url: string, body: unknown) => {
+  const ctrl = new AbortController();
+  const timer = window.setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+  try {
+    return await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+      signal: ctrl.signal,
+    });
+  } finally {
+    window.clearTimeout(timer);
+  }
+};
+
+const sendViaEmailJS = async (f: Fields) => {
+  const res = await postJSON("https://api.emailjs.com/api/v1.0/email/send", {
+    service_id: EMAILJS.service,
+    template_id: EMAILJS.template,
+    user_id: EMAILJS.publicKey,
+    // Several common variable names, so the message fills in whichever ones the template uses
+    template_params: {
+      from_name: f.name,
+      from_email: f.email,
+      reply_to: f.email,
+      name: f.name,
+      email: f.email,
+      message: f.message,
+      to_name: profile.name,
+      to_email: profile.email,
+      title: `Portfolio message from ${f.name}`,
+    },
+  });
+  if (!res.ok) throw new Error(`EmailJS ${res.status}: ${await res.text().catch(() => "")}`);
+};
+
+const sendViaFormSubmit = async (f: Fields) => {
+  const res = await postJSON(FORMSUBMIT_URL, {
+    name: f.name,
+    email: f.email,
+    message: f.message,
+    _replyto: f.email,
+    _subject: `Portfolio message from ${f.name}`,
+    _template: "table",
+    _captcha: "false",
+  });
+  const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
+  if (!res.ok || String(data.success) !== "true") throw new Error(`FormSubmit ${res.status}: ${data.message ?? ""}`);
+};
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sending, setSending] = useState(false);
-  const [status, setStatus] = useState<Status>(null);
+  const [form, setForm] = useState<Fields>({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Errors>({});
+  const [phase, setPhase] = useState<Phase>("idle");
+  const [sentName, setSentName] = useState("");
+  const [copied, setCopied] = useState(false);
+  const honeypot = useRef<HTMLInputElement>(null);
+  const lastSent = useRef(0);
 
-  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    if (errors[name as keyof Fields]) setErrors((er) => ({ ...er, [name]: undefined }));
+    if (phase === "failed") setPhase("idle");
+  };
+
+  const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(`Portfolio message from ${form.name || "a visitor"}`)}&body=${encodeURIComponent(
+    `${form.message}\n\n${form.name}\n${form.email}`,
+  )}`;
+
+  const copyMessage = async () => {
+    try {
+      await navigator.clipboard.writeText(`To: ${profile.email}\n\n${form.message}\n\n${form.name}\n${form.email}`);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard blocked: the mailto button is still there */
+    }
+  };
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setStatus({ kind: "err", text: "Please fill in all fields." });
+    if (phase === "sending") return;
+
+    const errs = validate(form);
+    setErrors(errs);
+    if (Object.keys(errs).length) {
+      const first = Object.keys(errs)[0];
+      document.getElementById(first)?.focus();
       return;
     }
-    setSending(true);
-    setStatus(null);
-    try {
-      // EmailJS is only downloaded when someone actually sends a message
-      const { default: emailjs } = await import("@emailjs/browser");
-      await emailjs.send(
-        EMAILJS.service,
-        EMAILJS.template,
-        { from_name: form.name, from_email: form.email, message: form.message, to_email: profile.email },
-        EMAILJS.publicKey,
-      );
-      setStatus({ kind: "ok", text: "Thanks! Your message has been sent. I'll get back to you soon." });
+
+    // Bots fill hidden fields; real people never see this one. Pretend success and drop it.
+    if (honeypot.current?.value) {
+      setPhase("sent");
+      return;
+    }
+    // Stop accidental double sends
+    if (Date.now() - lastSent.current < 20000) {
+      setPhase("sent");
+      return;
+    }
+
+    setPhase("sending");
+    const clean: Fields = { name: form.name.trim(), email: form.email.trim(), message: form.message.trim() };
+    let delivered = false;
+    for (const send of [sendViaEmailJS, sendViaFormSubmit]) {
+      try {
+        await send(clean);
+        delivered = true;
+        break;
+      } catch (err) {
+        console.warn("Contact form: delivery attempt failed, trying the next route.", err);
+      }
+    }
+
+    if (delivered) {
+      lastSent.current = Date.now();
+      setSentName(clean.name.split(" ")[0]);
       setForm({ name: "", email: "", message: "" });
-    } catch (err) {
-      console.error("Email sending failed:", err);
-      setStatus({ kind: "err", text: `Sorry, the message couldn't be sent. Please email me at ${profile.email}.` });
-    } finally {
-      setSending(false);
+      setPhase("sent");
+    } else {
+      setPhase("failed"); // keep what they typed so nothing is lost
     }
   };
+
+  const fieldProps = (name: keyof Fields) => ({
+    id: name,
+    name,
+    value: form[name],
+    onChange,
+    "aria-invalid": errors[name] ? true : undefined,
+    "aria-describedby": errors[name] ? `${name}-error` : undefined,
+    disabled: phase === "sending",
+  });
 
   return (
     <section className="section" id="contact" aria-labelledby="contact-title">
@@ -75,28 +197,64 @@ const Contact = () => {
               </a>
             </div>
 
-            <form className="form" onSubmit={onSubmit} noValidate>
-              <div className="field">
-                <label htmlFor="name">Name</label>
-                <input id="name" name="name" autoComplete="name" value={form.name} onChange={onChange} placeholder="Your name" required />
+            {phase === "sent" ? (
+              <div className="form form-done" role="status" aria-live="polite">
+                <span className="done-ic" aria-hidden="true">
+                  <Check size={30} />
+                </span>
+                <h3>Message sent{sentName ? `, ${sentName}` : ""}!</h3>
+                <p>Thanks for reaching out. It's in my inbox and I'll reply to your email soon, usually within a day.</p>
+                <button className="btn btn-ghost" onClick={() => setPhase("idle")}>
+                  Send another message
+                </button>
               </div>
-              <div className="field">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={onChange} placeholder="you@company.com" required />
-              </div>
-              <div className="field">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows={5} value={form.message} onChange={onChange} placeholder="Tell me about the role or project…" required />
-              </div>
-              {status && (
-                <p className={`form-status ${status.kind}`} role={status.kind === "err" ? "alert" : "status"}>
-                  {status.text}
-                </p>
-              )}
-              <button className="btn btn-primary" type="submit" disabled={sending}>
-                <Send size={17} /> {sending ? "Sending…" : "Send message"}
-              </button>
-            </form>
+            ) : (
+              <form className="form" onSubmit={onSubmit} noValidate aria-busy={phase === "sending"}>
+                <div className="field">
+                  <label htmlFor="name">Name</label>
+                  <input {...fieldProps("name")} autoComplete="name" placeholder="Your name" maxLength={100} required />
+                  {errors.name && <span className="field-error" id="name-error">{errors.name}</span>}
+                </div>
+                <div className="field">
+                  <label htmlFor="email">Email</label>
+                  <input {...fieldProps("email")} type="email" inputMode="email" autoComplete="email" placeholder="you@company.com" maxLength={150} required />
+                  {errors.email && <span className="field-error" id="email-error">{errors.email}</span>}
+                </div>
+                <div className="field">
+                  <label htmlFor="message">Message</label>
+                  <textarea {...fieldProps("message")} rows={5} placeholder="Tell me about the role or project…" maxLength={5000} required />
+                  {errors.message && <span className="field-error" id="message-error">{errors.message}</span>}
+                </div>
+
+                {/* Honeypot: hidden from people and screen readers, catches spam bots */}
+                <div className="hp" aria-hidden="true">
+                  <label htmlFor="company">Company</label>
+                  <input ref={honeypot} id="company" name="company" tabIndex={-1} autoComplete="off" />
+                </div>
+
+                {phase === "failed" && (
+                  <div className="form-status err" role="alert">
+                    <p>
+                      Sorry, the message couldn't be sent from here right now. Your text is still in the form. Send it straight
+                      from your email app instead:
+                    </p>
+                    <div className="status-actions">
+                      <a className="btn btn-primary btn-sm" href={mailto}>
+                        <Mail size={16} /> Open in email app
+                      </a>
+                      <button type="button" className="btn btn-ghost btn-sm" onClick={copyMessage}>
+                        {copied ? <Check size={16} /> : <Copy size={16} />} {copied ? "Copied" : "Copy message"}
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <button className="btn btn-primary" type="submit" disabled={phase === "sending"}>
+                  {phase === "sending" ? <span className="spinner" aria-hidden="true" /> : <Send size={17} />}
+                  {phase === "sending" ? "Sending…" : phase === "failed" ? "Try again" : "Send message"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
