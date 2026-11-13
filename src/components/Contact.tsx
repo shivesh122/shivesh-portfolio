@@ -74,7 +74,7 @@ const sendViaFormSubmit = async (f: Fields) => {
     _captcha: "false",
   });
   const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
-  if (!res.ok || String(data.success) !== "true") throw new Error(`FormSubmit ${res.status}: ${data.message ?? ""}`);
+  if (!res.ok || String(data.success) !== "true") throw new Error(`FormSubmit ${res.status}: ${data.message ?? "no details"}`);
 };
 
 const Contact = () => {
@@ -83,6 +83,9 @@ const Contact = () => {
   const [phase, setPhase] = useState<Phase>("idle");
   const [sentName, setSentName] = useState("");
   const [copied, setCopied] = useState(false);
+  const [reasons, setReasons] = useState<string[]>([]);
+  // Owner diagnostics: open the site with ?debug=1 to see exactly why a delivery route refused a message
+  const debug = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("debug");
   const honeypot = useRef<HTMLInputElement>(null);
   const lastSent = useRef(0);
 
@@ -133,6 +136,7 @@ const Contact = () => {
     setPhase("sending");
     const clean: Fields = { name: form.name.trim(), email: form.email.trim(), message: form.message.trim() };
     let delivered = false;
+    const failures: string[] = [];
     for (const send of [sendViaEmailJS, sendViaFormSubmit]) {
       try {
         await send(clean);
@@ -140,6 +144,8 @@ const Contact = () => {
         break;
       } catch (err) {
         console.warn("Contact form: delivery attempt failed, trying the next route.", err);
+        const msg = err instanceof Error ? err.message : String(err);
+        failures.push(/abort/i.test(msg) ? `${send === sendViaEmailJS ? "EmailJS" : "FormSubmit"}: timed out` : msg);
       }
     }
 
@@ -149,6 +155,7 @@ const Contact = () => {
       setForm({ name: "", email: "", message: "" });
       setPhase("sent");
     } else {
+      setReasons(failures);
       setPhase("failed"); // keep what they typed so nothing is lost
     }
   };
@@ -238,6 +245,9 @@ const Contact = () => {
                       Sorry, the message couldn't be sent from here right now. Your text is still in the form. Send it straight
                       from your email app instead:
                     </p>
+                    {debug && reasons.length > 0 && (
+                      <pre className="debug-reasons">{reasons.join("\n")}</pre>
+                    )}
                     <div className="status-actions">
                       <a className="btn btn-primary btn-sm" href={mailto}>
                         <Mail size={16} /> Open in email app

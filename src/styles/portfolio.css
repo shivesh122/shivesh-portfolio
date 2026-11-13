@@ -635,3 +635,4 @@ span.count { display: inline !important; font: inherit !important; color: inheri
 .form-done .done-ic { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok); animation: pop 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .form-done h3 { font-family: var(--display); font-size: 26px; letter-spacing: -0.02em; }
 .form-done p { color: var(--muted); }
+.debug-reasons { margin: 10px 0 0; padding: 10px; border-radius: 8px; background: var(--surface); color: var(--text); font-family: var(--mono); font-size: 12px; white-space: pre-wrap; word-break: break-word; }
