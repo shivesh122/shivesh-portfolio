@@ -1,6 +1,6 @@
 import SectionHead from "@/components/SectionHead";
-import { Award, ArrowUpRight } from "@/components/icons";
-import { achievements, certifications, education } from "@/data/portfolio";
+import { Award, ArrowUpRight, ShieldCheck } from "@/components/icons";
+import { achievements, certifications, education, featuredCert } from "@/data/portfolio";
 
 const Education = () => (
   <section className="section" id="education" aria-labelledby="education-title">
@@ -34,6 +34,29 @@ const Education = () => (
           </ul>
           <div className="certs">
             <h4>Certifications · click to verify</h4>
+            {(() => {
+              const inner = (
+                <>
+                  <span className="cert-seal" aria-hidden="true">
+                    <ShieldCheck size={22} />
+                  </span>
+                  <span className="cert-text">
+                    <small>
+                      {featuredCert.issuer} · {featuredCert.date}
+                    </small>
+                    <b>{featuredCert.name}</b>
+                  </span>
+                  <span className="cert-code">{featuredCert.code}</span>
+                </>
+              );
+              return featuredCert.url ? (
+                <a className="cert-feature" href={featuredCert.url} target="_blank" rel="noopener noreferrer">
+                  {inner}
+                </a>
+              ) : (
+                <div className="cert-feature">{inner}</div>
+              );
+            })()}
             <div className="chips">
               {certifications.map((c) => (
                 <a className="chip" key={c.name} href={c.url} target="_blank" rel="noopener noreferrer">

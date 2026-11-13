@@ -1,5 +1,6 @@
-import { useState, type SyntheticEvent } from "react";
+import { useState, type PointerEvent as RPointerEvent, type SyntheticEvent } from "react";
 import SectionHead from "@/components/SectionHead";
+import CountUp from "@/components/CountUp";
 import { ArrowUpRight, Github } from "@/components/icons";
 import { featuredProjects, moreProjects, profile, type Category } from "@/data/portfolio";
 import { useReveal } from "@/hooks/useReveal";
@@ -23,6 +24,24 @@ const onImgError = (e: SyntheticEvent<HTMLImageElement>) => {
   img.replaceWith(box);
 };
 
+// 3D tilt for featured screenshots: writes CSS variables only, so React never re-renders
+const tilt = (e: RPointerEvent<HTMLDivElement>) => {
+  if (e.pointerType !== "mouse") return;
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - 0.5;
+  const y = (e.clientY - r.top) / r.height - 0.5;
+  el.style.setProperty("--ry", `${x * 10}deg`);
+  el.style.setProperty("--rx", `${-y * 8}deg`);
+  el.style.setProperty("--gx", `${(x + 0.5) * 100}%`);
+  el.style.setProperty("--gy", `${(y + 0.5) * 100}%`);
+};
+const untilt = (e: RPointerEvent<HTMLDivElement>) => {
+  const el = e.currentTarget;
+  el.style.setProperty("--ry", "0deg");
+  el.style.setProperty("--rx", "0deg");
+};
+
 const Projects = () => {
   const [filter, setFilter] = useState<"All" | Category>("All");
   const shown = moreProjects.filter((p) => filter === "All" || p.category === filter);
@@ -38,8 +57,9 @@ const Projects = () => {
         <div className="featured">
           {featuredProjects.map((p) => (
             <article className="card feature" key={p.title} data-reveal>
-              <div className="shot">
+              <div className="shot" onPointerMove={tilt} onPointerLeave={untilt}>
                 <div className="window">
+                  <span className="glare" aria-hidden="true"></span>
                   <div className="window-bar" aria-hidden="true">
                     <i></i>
                     <i></i>
@@ -59,7 +79,9 @@ const Projects = () => {
                   <div className="metrics">
                     {p.metrics.map((m) => (
                       <div className="metric" key={m.label}>
-                        <b className="grad-text">{m.value}</b>
+                        <b className="grad-text">
+                          <CountUp value={m.value} />
+                        </b>
                         <span>{m.label}</span>
                       </div>
                     ))}
