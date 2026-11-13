@@ -11,7 +11,7 @@ export const profile = {
   phone: "+91 9554193106",
   resume: "/Shivesh_Tiwari_Resume.pdf",
   github: "https://github.com/shivesh122",
-  linkedin: "https://www.linkedin.com/in/shivesh-nath-tiwari",
+  linkedin: "https://www.linkedin.com/in/shivesh-tiwari-",
   photo: { src: "/img/profile-400.webp", srcSet: "/img/profile-400.webp 400w, /img/profile-800.webp 800w" },
 };
 
