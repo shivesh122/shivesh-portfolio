@@ -137,3 +137,54 @@ export const VolumeOff = ({ size, ...p }: IconProps) => (
     <path d="m22 9-6 6M16 9l6 6" />
   </svg>
 );
+
+export const Sparkles = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+    <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+  </svg>
+);
+
+export const ShieldCheck = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>
+);
+
+export const Copy = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <rect x="9" y="9" width="13" height="13" rx="2" />
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+  </svg>
+);
+
+export const Rocket = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+    <path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5" />
+  </svg>
+);
+
+export const BarChart = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <path d="M3 3v18h18" />
+    <path d="M7 16v-4M12 16V8M17 16v-7" />
+  </svg>
+);
+
+export const Target = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
+);
+
+export const Briefcase = ({ size, ...p }: IconProps) => (
+  <svg {...base(size, p)}>
+    <rect x="2" y="7" width="20" height="14" rx="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+);

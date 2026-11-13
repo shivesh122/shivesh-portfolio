@@ -15,6 +15,53 @@ export const profile = {
   photo: { src: "/img/profile-400.webp", srcSet: "/img/profile-400.webp 400w, /img/profile-800.webp 800w" },
 };
 
+/** Rotating titles in the hero headline (the first one is what search engines and screen readers get). */
+export const roles = ["Data Analyst", "Machine Learning Engineer", "Power BI Developer", "Fabric Data Engineer", "MLOps Engineer"];
+
+/** Headline credential, shown in the hero, the recruiter summary and the certifications panel. */
+export const featuredCert = {
+  name: "Microsoft Certified: Fabric Data Engineer Associate",
+  code: "DP-700",
+  issuer: "Microsoft",
+  date: "Sep 2026",
+  // Paste your Microsoft Learn credential link here to make the badge clickable / verifiable
+  url: "",
+};
+
+/** The four reasons a hiring manager should keep reading. Every claim maps to a project or role below. */
+export const highlights = [
+  {
+    icon: "rocket",
+    value: "11",
+    title: "Ships to production",
+    text: "11 live demos and reports anyone can open today, each backed by public source code.",
+  },
+  {
+    icon: "chart",
+    value: "GA4 → BI",
+    title: "Works on real business data",
+    text: "Owns the Effling Kids KPI dashboard on GA4 data in BigQuery and presents it to management.",
+  },
+  {
+    icon: "shield",
+    value: "DP-700",
+    title: "Microsoft-certified",
+    text: "Fabric Data Engineer Associate: lakehouses, pipelines and data modelling, validated by Microsoft.",
+  },
+  {
+    icon: "target",
+    value: "0.99",
+    title: "Measures what matters",
+    text: "0.99 ROC-AUC fraud model at a 0.4% false-positive rate, 86% forecast accuracy, 53 automated tests.",
+  },
+] as const;
+
+/** Scrolling tool strip under the hero. */
+export const marquee = [
+  "Python", "SQL", "Power BI", "Microsoft Fabric", "BigQuery", "GA4", "DAX", "Scikit-learn", "Pandas",
+  "TensorFlow", "React", "Node.js", "MongoDB", "D3.js", "GitHub Actions", "AWS", "Google Cloud", "Excel",
+];
+
 export const stats = [
   { value: "13", label: "projects built" },
   { value: "11", label: "live demos & reports" },

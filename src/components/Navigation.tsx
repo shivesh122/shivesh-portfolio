@@ -78,6 +78,9 @@ const Navigation = () => {
             <a className="btn btn-ghost btn-sm resume-btn" href={profile.resume} target="_blank" rel="noopener">
               <Download size={16} /> Résumé
             </a>
+            <a className="btn btn-primary btn-sm hire-btn" href="#contact">
+              Hire me
+            </a>
             <button className="icon-btn menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"}>
               {open ? <Close /> : <Menu />}
             </button>
